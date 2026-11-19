@@ -1,0 +1,2611 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="IELTS 8.0 AI">
+    <meta name="theme-color" content="#060913">
+    <title>IELTS 8.0 AI Master — Lộ Trình Mất Gốc Đến 8.0 Trong 6 Tháng</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            950: '#060913',
+                            900: '#0C1222',
+                            800: '#162038',
+                            700: '#233152',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-color: #060913;
+            color: #F8FAFC;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body {
+            background-image:
+                radial-gradient(circle at 12% 10%, rgba(59, 130, 246, 0.14), transparent 38%),
+                radial-gradient(circle at 88% 18%, rgba(16, 185, 129, 0.10), transparent 36%),
+                radial-gradient(circle at 50% 95%, rgba(139, 92, 246, 0.12), transparent 42%);
+        }
+
+        /* Glassmorphism Surfaces */
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.78);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.65);
+        }
+
+        .glass-card {
+            background: rgba(22, 32, 56, 0.72);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Smooth View Transitions */
+        .tab-panel {
+            display: none;
+            animation: panelFadeIn 0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        @keyframes panelFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Tactile Button Interaction */
+        .btn-tactile {
+            transition: transform 0.16s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+        .btn-tactile:active {
+            transform: scale(0.96);
+        }
+        .btn-tactile:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Hide Scrollbars cleanly */
+        .no-scrollbar {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Shimmer Loading Effect */
+        .shimmer {
+            background: linear-gradient(90deg, rgba(30,41,59,0.55) 25%, rgba(51,65,85,0.85) 50%, rgba(30,41,59,0.55) 75%);
+            background-size: 200% 100%;
+            animation: shimmerRun 1.4s infinite linear;
+        }
+        @keyframes shimmerRun {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Recording Pulse Ring */
+        @keyframes micPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.55); }
+            50% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+        }
+        .mic-recording {
+            animation: micPulse 1.3s infinite;
+        }
+
+        /* iPhone 15 Pro Max Dynamic Island & Home Indicator Safe Areas */
+        header.ios-safe-top {
+            padding-top: max(0.75rem, env(safe-area-inset-top));
+        }
+        main.ios-safe-bottom {
+            padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
+        }
+        @media (min-width: 768px) {
+            main.ios-safe-bottom {
+                padding-bottom: 2rem;
+            }
+        }
+        .ios-bottom-bar {
+            padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+        }
+    </style>
+</head>
+<body class="text-slate-100 antialiased selection:bg-blue-500/30 selection:text-blue-200">
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="fixed top-4 right-4 z-50 flex flex-col gap-2 max-w-sm w-[92vw] pointer-events-none"></div>
+
+    <!-- Top Sticky Navigation Bar -->
+    <header class="ios-safe-top sticky top-0 z-40 bg-brand-950/90 backdrop-blur-xl border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-col md:flex-row md:items-center justify-between gap-3">
+            <!-- Brand Identity -->
+            <div class="flex items-center justify-between gap-2">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-blue-600 via-indigo-600 to-emerald-500 flex items-center justify-center shadow-lg shadow-blue-600/25 border border-white/15 shrink-0">
+                        <i data-lucide="graduation-cap" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h1 class="text-base sm:text-lg font-black tracking-tight text-white">
+                                IELTS <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">8.0 AI MASTER</span>
+                            </h1>
+                            <span class="hidden sm:inline-block px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-[10px] font-bold text-emerald-300">
+                                6-Month Roadmap
+                            </span>
+                        </div>
+                        <p class="text-[11px] text-slate-400">Lộ trình từ mất gốc hoàn toàn → Band 8.0 IELTS cùng Gia sư AI</p>
+                    </div>
+                </div>
+                <button onclick="toggleIosInstallModal(true)" class="btn-tactile shrink-0 px-2.5 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-[11px] font-bold text-blue-300 flex items-center gap-1.5" title="Hướng dẫn cài lên iPhone & Cài đặt API Key">
+                    <i data-lucide="smartphone" class="w-3.5 h-3.5"></i>
+                    <span>Cài iPhone</span>
+                </button>
+            </div>
+
+            <!-- 5 Main Navigation Tabs (Desktop) -->
+            <nav class="hidden md:flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-0.5">
+                <button onclick="switchMainTab('roadmap')" id="tab-btn-roadmap" class="nav-tab-btn btn-tactile shrink-0 px-3.5 py-2 rounded-xl text-xs font-bold bg-blue-600 text-white shadow-md shadow-blue-600/25 flex items-center gap-1.5">
+                    <i data-lucide="map" class="w-3.5 h-3.5"></i> Lộ trình & Tài liệu
+                </button>
+                <button onclick="switchMainTab('qa')" id="tab-btn-qa" class="nav-tab-btn btn-tactile shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold bg-white/5 hover:bg-white/10 text-slate-300 flex items-center gap-1.5">
+                    <i data-lucide="message-circle-question" class="w-3.5 h-3.5"></i> Hỏi & Ảnh
+                </button>
+                <button onclick="switchMainTab('vocab')" id="tab-btn-vocab" class="nav-tab-btn btn-tactile shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold bg-white/5 hover:bg-white/10 text-slate-300 flex items-center gap-1.5">
+                    <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Từ & Âm
+                </button>
+                <button onclick="switchMainTab('speaking')" id="tab-btn-speaking" class="nav-tab-btn btn-tactile shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold bg-white/5 hover:bg-white/10 text-slate-300 flex items-center gap-1.5">
+                    <i data-lucide="mic" class="w-3.5 h-3.5"></i> Speaking
+                </button>
+                <button onclick="switchMainTab('writing')" id="tab-btn-writing" class="nav-tab-btn btn-tactile shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold bg-white/5 hover:bg-white/10 text-slate-300 flex items-center gap-1.5">
+                    <i data-lucide="pen-tool" class="w-3.5 h-3.5"></i> Writing
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- iPhone Installation & Standalone API Key Modal -->
+    <div id="iosInstallModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="glass-panel rounded-3xl max-w-md w-full p-5 space-y-3.5 border border-white/15 max-h-[88vh] overflow-y-auto">
+            <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                <h3 class="text-sm sm:text-base font-extrabold text-white flex items-center gap-2">
+                    <i data-lucide="smartphone" class="w-4 h-4 text-blue-400"></i>
+                    Chạy Tràn Viền 100% Trên iPhone 15 Pro Max
+                </h3>
+                <button onclick="toggleIosInstallModal(false)" class="p-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+
+            <div class="space-y-2.5 text-xs text-slate-300 leading-relaxed">
+                <div class="p-3 rounded-2xl bg-amber-500/10 border border-amber-500/25 text-amber-200">
+                    <strong>Tại sao có viền trắng trên/dưới?</strong> Vì link chia sẻ của Gemini bọc app trong khung xem trước. Để app chạy <strong>tràn viền full màn hình như App Store</strong>, hãy làm 3 bước (mất 15 giây):
+                </div>
+
+                <div class="p-3 rounded-2xl bg-brand-950/90 border border-white/10 space-y-2">
+                    <p class="font-bold text-emerald-400">Bước 1: Tải file ứng dụng về iPhone</p>
+                    <button onclick="downloadStandaloneHtml()" class="btn-tactile w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg">
+                        <i data-lucide="download" class="w-4 h-4"></i> Tải ngay file index.html về iPhone
+                    </button>
+                </div>
+
+                <div class="p-3 rounded-2xl bg-brand-950/90 border border-white/10 space-y-1">
+                    <p class="font-bold text-blue-300">Bước 2: Đưa lên link web riêng miễn phí</p>
+                    <p>Mở <strong>Safari</strong> trên iPhone → vào trang <strong>tiiny.host</strong> (hoặc <strong>app.netlify.com/drop</strong>) → chọn file <code>index.html</code> vừa tải về để nhận link riêng không viền trắng.</p>
+                </div>
+
+                <div class="p-3 rounded-2xl bg-brand-950/90 border border-white/10 space-y-2">
+                    <p class="font-bold text-purple-300">Bước 3: Nhập Gemini API Key & Thêm ra Màn hình chính</p>
+                    <p>Dán mã <strong>Gemini API Key</strong> miễn phí (lấy tại <em>aistudio.google.com</em>) vào ô dưới, sau đó bấm <strong>Share ↑ → Thêm vào Màn hình chính</strong>:</p>
+                    <div class="flex gap-2">
+                        <input id="customGeminiKeyInput" type="password" placeholder="Dán AIzaSy... vào đây" class="flex-1 px-3 py-2 rounded-xl bg-brand-900 border border-white/15 text-xs text-white focus:outline-none focus:border-blue-500">
+                        <button onclick="saveCustomGeminiKey()" class="btn-tactile px-3 py-2 rounded-xl bg-blue-600 text-white text-xs font-bold shrink-0">Lưu Key</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Workspace -->
+    <main class="ios-safe-bottom max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-6">
+
+        <!-- =================================================================
+             TAB 1: LỘ TRÌNH 6 THÁNG, PHƯƠNG PHÁP KHOA HỌC & TÌM TÀI LIỆU
+             ================================================================= -->
+        <section id="view-roadmap" class="tab-panel active space-y-6">
+            <!-- Top Grid: 6-Month Roadmap (7 cols) + Daily Study Checklist (5 cols) -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+                <!-- 6-Month Roadmap -->
+                <div class="lg:col-span-7 glass-panel rounded-3xl p-5 space-y-4">
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3">
+                        <div>
+                            <h2 class="text-base sm:text-lg font-extrabold text-white flex items-center gap-2">
+                                <i data-lucide="compass" class="w-5 h-5 text-blue-400"></i>
+                                Lộ Trình 6 Tháng: Từ Mất Gốc Lên Band 8.0 IELTS
+                            </h2>
+                            <p class="text-xs text-slate-400">Phân chia theo từng tháng với mục tiêu điểm số & kỹ năng cốt lõi</p>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-xl bg-blue-500/15 border border-blue-500/30 text-[11px] font-bold text-blue-300">
+                            2.5 – 3 giờ / ngày
+                        </span>
+                    </div>
+
+                    <div id="roadmapTimelineGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <!-- Rendered via JS -->
+                    </div>
+                </div>
+
+                <!-- Daily Action Checklist -->
+                <div class="lg:col-span-5 glass-panel rounded-3xl p-5 flex flex-col justify-between space-y-4">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                            <div>
+                                <h3 class="text-sm sm:text-base font-extrabold text-white flex items-center gap-2">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+                                    Nhiệm Vụ Thực Hành Hôm Nay
+                                </h3>
+                                <p class="text-xs text-slate-400">Hoàn thành đều đặn mỗi ngày để duy trì phản xạ</p>
+                            </div>
+                            <span id="dailyProgressText" class="px-2.5 py-1 rounded-xl bg-emerald-500/15 text-emerald-300 text-xs font-extrabold">0/4</span>
+                        </div>
+
+                        <!-- Progress Bar -->
+                        <div class="w-full h-2 rounded-full bg-brand-950 overflow-hidden border border-white/5">
+                            <div id="dailyProgressBar" class="h-full bg-gradient-to-r from-blue-500 to-emerald-400 transition-all duration-300" style="width: 0%"></div>
+                        </div>
+
+                        <div id="dailyChecklistContainer" class="space-y-2.5">
+                            <!-- Rendered via JS -->
+                        </div>
+                    </div>
+
+                    <div class="p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/25 text-xs text-amber-200 leading-relaxed">
+                        <strong>💡 Mẹo cho người mất gốc:</strong> Đừng học nhồi nhét ngữ pháp khô khan. Mỗi từ vựng mới hãy bấm nút <strong>Loa</strong> nghe 3 lần và bấm <strong>Micro</strong> đọc lại cho AI chấm chuẩn xác 90%+ rồi mới chuyển từ!
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scientific Methods & Renowned Creators / Longstanding IELTS Centers -->
+            <div class="glass-panel rounded-3xl p-5 space-y-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/10 pb-3">
+                    <div>
+                        <h3 class="text-sm sm:text-base font-extrabold text-white flex items-center gap-2">
+                            <i data-lucide="brain" class="w-4 h-4 text-purple-400"></i>
+                            Phương Pháp Khoa Học & Tinh Hoa Từ YouTubers / Trung Tâm Lâu Đời
+                        </h3>
+                        <p class="text-xs text-slate-400">Áp dụng nguyên lý khoa học não bộ kết hợp kinh nghiệm thực chiến từ Gấu Forum, IELTS Simon/Liz & các trung tâm lâu đời</p>
+                    </div>
+                    <div class="flex gap-1.5 bg-brand-950 p-1 rounded-2xl border border-white/10 shrink-0">
+                        <button onclick="switchMethodTab('science')" id="btn-method-science" class="btn-tactile px-3 py-1.5 rounded-xl text-xs font-bold bg-purple-600 text-white">
+                            🧬 6 Phương pháp khoa học
+                        </button>
+                        <button onclick="switchMethodTab('creators')" id="btn-method-creators" class="btn-tactile px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-300 hover:text-white">
+                            🎬 YouTubers & Trung tâm
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sub-panel 1: 6 Evidence-Based Scientific Methods -->
+                <div id="panel-method-science" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                    <!-- Rendered via JS -->
+                </div>
+
+                <!-- Sub-panel 2: Famous YouTubers (Gấu Forum, etc.) & Longstanding Centers -->
+                <div id="panel-method-creators" class="hidden grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <!-- Rendered via JS -->
+                </div>
+            </div>
+
+            <!-- Live Daily Study Material Curator (Google Search Grounded) -->
+            <div class="glass-panel rounded-3xl p-5 space-y-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div>
+                        <h3 class="text-sm sm:text-base font-extrabold text-white flex items-center gap-2">
+                            <i data-lucide="globe" class="w-4 h-4 text-emerald-400"></i>
+                            Trình Tìm Tài Liệu & Lộ Trình Thực Tế Hàng Ngày
+                        </h3>
+                        <p class="text-xs text-slate-400">AI tự động tìm kiếm lộ trình, video & bài học từ YouTubers nổi tiếng, trung tâm uy tín và kho học thuật quốc tế</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <select id="materialLevelSelect" class="px-3 py-2 rounded-xl bg-brand-950 border border-white/15 text-xs text-white focus:outline-none focus:border-blue-500">
+                            <option value="Mất gốc hoàn toàn (IPA, 1000 từ cơ bản, Ngữ pháp nền tảng)">Giai đoạn 1: Mất gốc (Band 0 → 4.5)</option>
+                            <option value="Trung cấp (IELTS Band 5.0 - 6.5, Listening & Reading cơ bản)">Giai đoạn 2: Tăng tốc (Band 5.0 → 6.5)</option>
+                            <option value="Nâng cao (IELTS Band 7.0 - 8.0+, Từ vựng C1/C2, Academic Writing & Speaking)">Giai đoạn 3: Về đích (Band 7.0 → 8.0+)</option>
+                        </select>
+                        <button onclick="fetchDailyMaterials()" id="fetchMaterialBtn" class="btn-tactile px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-xs font-bold shadow-lg flex items-center gap-1.5 shrink-0">
+                            <i data-lucide="search" class="w-3.5 h-3.5"></i> Kiếm tài liệu hôm nay
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quick Source Search Chips -->
+                <div class="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
+                    <button onclick="fetchCustomMaterialQuery('Tìm lộ trình và phương pháp tự học tiếng Anh giao tiếp & IELTS của YouTuber Gấu Forum và các kênh tự học tiếng Anh thực chiến hiệu quả nhất cho người Việt')" class="btn-tactile shrink-0 px-3 py-1.5 rounded-xl bg-brand-950 hover:bg-brand-800 border border-purple-500/30 text-xs text-purple-200">
+                        🎬 Tham khảo kênh Gấu Forum & YouTubers tự học
+                    </button>
+                    <button onclick="fetchCustomMaterialQuery('Tổng hợp lộ trình học IELTS từ mất gốc lên 8.0 tham khảo khung chương trình của British Council, ACET, VUS, ZIM Academy và DOL English Linearthinking')" class="btn-tactile shrink-0 px-3 py-1.5 rounded-xl bg-brand-950 hover:bg-brand-800 border border-blue-500/30 text-xs text-blue-200">
+                        🏛️ Khung lộ trình trung tâm IELTS lâu đời
+                    </button>
+                    <button onclick="fetchCustomMaterialQuery('Hướng dẫn áp dụng chi tiết Spaced Repetition, Active Recall, Comprehensible Input i+1 và Shadowing để tự học IELTS tại nhà trong 6 tháng')" class="btn-tactile shrink-0 px-3 py-1.5 rounded-xl bg-brand-950 hover:bg-brand-800 border border-emerald-500/30 text-xs text-emerald-200">
+                        🧬 Áp dụng phương pháp khoa học vào lịch học
+                    </button>
+                    <button onclick="fetchCustomMaterialQuery('Tổng hợp bài mẫu và chiến thuật IELTS Writing & Speaking Band 8.0 từ cựu giám khảo IELTS Simon và IELTS Liz')" class="btn-tactile shrink-0 px-3 py-1.5 rounded-xl bg-brand-950 hover:bg-brand-800 border border-amber-500/30 text-xs text-amber-200">
+                        ✍️ Tài liệu chuẩn giám khảo IELTS Simon & Liz
+                    </button>
+                </div>
+
+                <div id="dailyMaterialOutput" class="rounded-2xl bg-brand-950/85 border border-white/10 p-4 text-xs sm:text-sm text-slate-200 leading-relaxed space-y-3">
+                    <div class="flex items-center gap-2 text-emerald-400 font-bold text-xs">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i>
+                        <span>Sẵn sàng tìm kiếm tài liệu & lộ trình thực tế theo trình độ của bạn</span>
+                    </div>
+                    <p class="text-xs text-slate-400">
+                        Chọn giai đoạn học hoặc bấm vào các nút tham khảo nhanh phía trên (kênh <strong>Gấu Forum</strong>, khung lộ trình trung tâm lâu đời, hoặc bài mẫu giám khảo <strong>Simon/Liz</strong>). Hệ thống sẽ tra cứu Google Search và soạn giáo án thực hành ngay lập tức.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================
+             TAB 2: HỎI ĐÁP GIA SƯ AI & GIẢI BÀI TẬP QUA HÌNH ẢNH
+             ================================================================= -->
+        <section id="view-qa" class="tab-panel space-y-5">
+            <div class="glass-panel rounded-3xl p-5 flex flex-col">
+                <!-- Header -->
+                <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-white/10">
+                    <div>
+                        <h2 class="text-base sm:text-lg font-extrabold text-white flex items-center gap-2">
+                            <i data-lucide="bot" class="w-5 h-5 text-blue-400"></i>
+                            Gia Sư AI Hỏi Đáp Tiếng Anh & Giải Đề Qua Ảnh
+                        </h2>
+                        <p class="text-xs text-slate-400">Nhắn tin, chọn câu hỏi từ ngân hàng hoặc tải ảnh chụp bài tập để AI giải thích cặn kẽ từ gốc</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="generateMoreQaPrompts()" id="genMoreQaBtn" class="btn-tactile px-3 py-1.5 rounded-xl bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/30 text-xs font-bold text-blue-300 flex items-center gap-1.5">
+                            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> AI Tạo thêm câu hỏi
+                        </button>
+                        <button onclick="clearChatHistory()" class="btn-tactile px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs text-slate-300 flex items-center gap-1.5">
+                            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i> Làm mới
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Categorized Question Bank for Q&A -->
+                <div class="pt-3 space-y-2">
+                    <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar" id="qaCategoryTabs">
+                        <button onclick="filterQaPrompts('ALL')" data-qacat="ALL" class="qa-cat-btn active px-2.5 py-1 rounded-lg text-[11px] font-bold bg-blue-600 text-white shrink-0">Tất cả (16+)</button>
+                        <button onclick="filterQaPrompts('Grammar')" data-qacat="Grammar" class="qa-cat-btn px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-brand-950 text-slate-300 border border-white/10 shrink-0">Ngữ pháp mất gốc</button>
+                        <button onclick="filterQaPrompts('Pronunciation')" data-qacat="Pronunciation" class="qa-cat-btn px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-brand-950 text-slate-300 border border-white/10 shrink-0">Phát âm & IPA</button>
+                        <button onclick="filterQaPrompts('ReadingListening')" data-qacat="ReadingListening" class="qa-cat-btn px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-brand-950 text-slate-300 border border-white/10 shrink-0">Chiến thuật Đọc & Nghe</button>
+                        <button onclick="filterQaPrompts('Band8')" data-qacat="Band8" class="qa-cat-btn px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-brand-950 text-slate-300 border border-white/10 shrink-0">Tư duy Band 8.0+</button>
+                    </div>
+                    <div id="qaQuickPromptsList" class="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
+                        <!-- Rendered via JS -->
+                    </div>
+                </div>
+
+                <!-- Chat Feed -->
+                <div id="qaChatFeed" class="my-4 space-y-3 max-h-[420px] overflow-y-auto pr-1">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-xl bg-blue-600 flex items-center justify-center shrink-0">
+                            <i data-lucide="bot" class="w-4 h-4 text-white"></i>
+                        </div>
+                        <div class="glass-card rounded-2xl rounded-tl-none p-3.5 text-xs sm:text-sm text-slate-200 leading-relaxed max-w-[88%]">
+                            Chào bạn! Tôi là Gia sư IELTS 8.0 AI của bạn. Bạn có thể hỏi bất kỳ kiến thức nào từ mất gốc (thì động từ, bảng IPA, từ loại) đến chiến thuật Reading/Listening/Writing 8.0, hoặc <strong>tải ảnh / dán ảnh chụp màn hình (Ctrl+V)</strong> bài tập tiếng Anh vào đây để tôi giải chi tiết nhé!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image Attachment Preview -->
+                <div id="qaImagePreviewBar" class="hidden mb-3 p-2.5 rounded-2xl bg-brand-950 border border-blue-500/30 flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                        <img id="qaImagePreviewImg" src="" alt="Preview" class="w-12 h-12 rounded-xl object-cover border border-white/15">
+                        <div>
+                            <p class="text-xs font-bold text-blue-300">Đã đính kèm hình ảnh bài tập</p>
+                            <p class="text-[11px] text-slate-400">AI sẽ đọc nội dung trong ảnh và giải thích chi tiết</p>
+                        </div>
+                    </div>
+                    <button onclick="removeQaImage()" class="p-1.5 rounded-xl bg-rose-500/20 text-rose-300 hover:bg-rose-500/30">
+                        <i data-lucide="x" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Input Composer -->
+                <div class="flex items-center gap-2 pt-2 border-t border-white/10">
+                    <label class="btn-tactile p-2.5 rounded-xl bg-brand-950 hover:bg-brand-800 border border-white/15 text-slate-300 cursor-pointer shrink-0" title="Tải ảnh bài tập lên">
+                        <i data-lucide="image-plus" class="w-5 h-5 text-blue-400"></i>
+                        <input type="file" id="qaImageInput" accept="image/*" class="hidden" onchange="handleQaImageUpload(event)">
+                    </label>
+                    <input id="qaTextInput" type="text" placeholder="Nhập câu hỏi tiếng Anh hoặc dán ảnh (Ctrl+V) vào đây..." class="flex-1 px-4 py-2.5 rounded-xl bg-brand-950 border border-white/15 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500" onkeydown="if(event.key==='Enter') sendQaMessage()">
+                    <button onclick="sendQaMessage()" id="qaSendBtn" class="btn-tactile px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-bold shadow-lg flex items-center gap-1.5 shrink-0">
+                        <span>Gửi</span>
+                        <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================
+             TAB 3: KHO TỪ VỰNG BAND 0 → 8.0 & LUYỆN PHÁT ÂM CHẤM ĐIỂM MICRO
+             ================================================================= -->
+        <section id="view-vocab" class="tab-panel space-y-5">
+            <!-- Pronunciation Studio Banner -->
+            <div class="glass-panel rounded-3xl p-5 border-l-4 border-l-emerald-400 space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="space-y-1">
+                        <span class="px-2.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 text-[10px] font-bold uppercase tracking-wider">
+                            Phòng Luyện Phát Âm Chuẩn IPA
+                        </span>
+                        <div class="flex flex-wrap items-baseline gap-3">
+                            <h2 id="targetWordDisplay" class="text-2xl sm:text-3xl font-black text-white tracking-tight">acquire</h2>
+                            <span id="targetWordIpa" class="font-mono text-sm text-emerald-400">/əˈkwaɪər/</span>
+                        </div>
+                        <p id="targetWordMeaning" class="text-xs text-slate-300">Đạt được, tiếp thu (kiến thức, kỹ năng)</p>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2.5">
+                        <button onclick="playTargetWordAudio()" class="btn-tactile px-4 py-2.5 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center gap-2 shadow-lg shadow-blue-600/25">
+                            <i data-lucide="volume-2" class="w-4 h-4"></i> Nghe giọng chuẩn
+                        </button>
+                        <button onclick="startPronunciationCheck()" id="recordPronounceBtn" class="btn-tactile px-4 py-2.5 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-xs font-bold flex items-center gap-2 shadow-lg shadow-emerald-600/25">
+                            <i data-lucide="mic" class="w-4 h-4"></i> Bấm Micro đọc từ này
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pronunciation AI Scoring Result -->
+                <div id="pronunciationFeedbackBox" class="hidden p-4 rounded-2xl bg-brand-950/90 border border-white/10 text-xs text-slate-200 space-y-2">
+                    <!-- Populated after speech recognition + Gemini evaluation -->
+                </div>
+            </div>
+
+            <!-- Vocabulary Bank & Custom AI Generator -->
+            <div class="glass-panel rounded-3xl p-5 space-y-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div>
+                        <h3 class="text-sm sm:text-base font-extrabold text-white flex items-center gap-2">
+                            <i data-lucide="book-open" class="w-4 h-4 text-blue-400"></i>
+                            Kho Từ Vựng Phân Cấp (Mất Gốc → Band 8.0+)
+                        </h3>
+                        <p class="text-xs text-slate-400">Bấm vào từng thẻ để nghe phát âm chuẩn và đưa lên phòng luyện Micro</p>
+                    </div>
+
+                    <!-- Level Filter Pills -->
+                    <div class="flex gap-1.5 flex-wrap">
+                        <button onclick="filterVocabLevel('ALL')" data-vlevel="ALL" class="vocab-filter-btn active px-3 py-1.5 rounded-xl text-xs font-bold bg-blue-600 text-white">Tất cả</button>
+                        <button onclick="filterVocabLevel('Foundation')" data-vlevel="Foundation" class="vocab-filter-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-brand-950 text-slate-300 border border-white/10">Mất gốc</button>
+                        <button onclick="filterVocabLevel('Band 6.5')" data-vlevel="Band 6.5" class="vocab-filter-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-brand-950 text-slate-300 border border-white/10">Band 6.5</button>
+                        <button onclick="filterVocabLevel('Band 8.0')" data-vlevel="Band 8.0" class="vocab-filter-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-brand-950 text-slate-300 border border-white/10">Band 8.0+</button>
+                    </div>
+                </div>
+
+                <!-- Custom Word / Topic AI Generator -->
+                <div class="space-y-2 pt-2 border-t border-white/10">
+                    <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+                        <span class="text-[11px] text-slate-400 shrink-0">Chủ đề gợi ý:</span>
+                        <button onclick="quickGenerateVocabTopic('Education & Academic Learning')" class="btn-tactile shrink-0 px-2.5 py-1 rounded-lg bg-brand-950 hover:bg-brand-800 border border-white/10 text-[11px] text-slate-300">🎓 Education</button>
+                        <button onclick="quickGenerateVocabTopic('Environment & Climate Change')" class="btn-tactile shrink-0 px-2.5 py-1 rounded-lg bg-brand-950 hover:bg-brand-800 border border-white/10 text-[11px] text-slate-300">🌱 Environment</button>
+                        <button onclick="quickGenerateVocabTopic('Technology & Artificial Intelligence')" class="btn-tactile shrink-0 px-2.5 py-1 rounded-lg bg-brand-950 hover:bg-brand-800 border border-white/10 text-[11px] text-slate-300">🤖 Technology</button>
+                        <button onclick="quickGenerateVocabTopic('Health & Modern Lifestyle')" class="btn-tactile shrink-0 px-2.5 py-1 rounded-lg bg-brand-950 hover:bg-brand-800 border border-white/10 text-[11px] text-slate-300">🩺 Health</button>
+                        <button onclick="quickGenerateVocabTopic('Economy & Globalization')" class="btn-tactile shrink-0 px-2.5 py-1 rounded-lg bg-brand-950 hover:bg-brand-800 border border-white/10 text-[11px] text-slate-300">📈 Economy</button>
+                        <button onclick="quickGenerateVocabTopic('Daily Conversation & Survival English')" class="btn-tactile shrink-0 px-2.5 py-1 rounded-lg bg-brand-950 hover:bg-brand-800 border border-white/10 text-[11px] text-slate-300">💬 Giao tiếp cơ bản</button>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-12 gap-2">
+                        <input id="customWordTopicInput" type="text" placeholder="Nhập chủ đề bất kỳ hoặc từ vựng cụ thể bạn muốn AI phân tích & luyện đọc..." class="sm:col-span-8 px-4 py-2.5 rounded-xl bg-brand-950 border border-white/15 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500">
+                        <button onclick="generateAIVocabPack()" id="genVocabBtn" class="sm:col-span-4 btn-tactile px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-xs font-bold flex items-center justify-center gap-1.5">
+                            <i data-lucide="sparkles" class="w-4 h-4"></i> AI Tạo thêm từ vựng 8.0
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Vocabulary Grid -->
+                <div id="vocabCardsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 pt-2">
+                    <!-- Rendered via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================
+             TAB 4: LUYỆN NGHE CHÉP CHÍNH TẢ & HỘI THOẠI SPEAKING AI
+             ================================================================= -->
+        <section id="view-speaking" class="tab-panel space-y-5">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+                <!-- Left Column: Listening Dictation Trainer (5 cols) -->
+                <div class="lg:col-span-5 glass-panel rounded-3xl p-5 space-y-4">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <div>
+                            <h3 class="text-sm sm:text-base font-extrabold text-white flex items-center gap-2">
+                                <i data-lucide="headphones" class="w-4 h-4 text-amber-400"></i>
+                                Luyện Nghe Chép Chính Tả (Dictation)
+                            </h3>
+                            <p class="text-[11px] text-slate-400">Kho 12+ bài đa chủ đề & AI tạo thêm câu nghe vô hạn</p>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <button onclick="prevListeningExercise()" class="btn-tactile px-2.5 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-[11px] font-bold text-slate-300" title="Câu trước">
+                                ←
+                            </button>
+                            <button onclick="nextListeningExercise()" class="btn-tactile px-2.5 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-[11px] font-bold text-amber-300">
+                                Câu tiếp →
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- AI Generate More Listening Sentences by Topic -->
+                    <div class="flex gap-1.5">
+                        <select id="listeningTopicSelect" class="flex-1 px-2.5 py-1.5 rounded-xl bg-brand-950 border border-white/15 text-[11px] text-white focus:outline-none">
+                            <option value="Daily Life & Travel (Foundation)">Chủ đề: Giao tiếp đời sống (Mất gốc)</option>
+                            <option value="Education & University (Band 6.0)">Chủ đề: Giáo dục & Học tập (Band 6.0)</option>
+                            <option value="Technology & AI (Band 7.0)">Chủ đề: Công nghệ & Trí tuệ nhân tạo</option>
+                            <option value="Environment & Society (Band 8.0)">Chủ đề: Môi trường & Xã hội (Band 8.0)</option>
+                            <option value="IELTS Listening Section 4 Academic">IELTS Listening Part 4 (Học thuật)</option>
+                        </select>
+                        <button onclick="generateAIListeningPack()" id="genListenBtn" class="btn-tactile px-3 py-1.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/30 text-[11px] font-bold text-amber-300 flex items-center gap-1 shrink-0">
+                            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Tạo 5 câu mới
+                        </button>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-brand-950/90 border border-white/10 space-y-3">
+                        <div class="flex items-center justify-between gap-2">
+                            <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 text-[10px] font-bold" id="listeningLevelTag">Level: Foundation</span>
+                            <select id="listeningJumpSelect" onchange="jumpToListening(this.value)" class="px-2 py-0.5 rounded bg-brand-900 border border-white/10 text-[11px] font-mono text-slate-300 focus:outline-none">
+                                <!-- Options populated via JS -->
+                            </select>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="playListeningSentence(false)" id="playListenBtn" class="btn-tactile flex-1 py-2.5 px-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs flex items-center justify-center gap-1.5">
+                                <i data-lucide="play" class="w-4 h-4"></i> Nghe câu tiếng Anh
+                            </button>
+                            <button onclick="playListeningSentence(true)" class="btn-tactile px-3 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-white/10 text-xs text-slate-200 font-semibold" title="Đọc chậm từng chữ">
+                                🐢 Chậm
+                            </button>
+                        </div>
+                        <textarea id="dictationUserInput" rows="2" placeholder="Gõ lại chính xác những gì bạn nghe được..." class="w-full p-3 rounded-xl bg-brand-900 border border-white/15 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"></textarea>
+                        <div class="flex gap-2">
+                            <button onclick="checkDictationAnswer()" class="btn-tactile flex-1 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold">
+                                Kiểm tra chính tả
+                            </button>
+                            <button onclick="revealDictationAnswer()" class="btn-tactile px-3 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-xs text-slate-300">
+                                Hiện đáp án
+                            </button>
+                        </div>
+                        <div id="dictationFeedbackBox" class="hidden p-3 rounded-xl bg-slate-900 border border-white/10 text-xs space-y-1"></div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Human-AI Speaking Partner & IELTS Band Grader (7 cols) -->
+                <div class="lg:col-span-7 glass-panel rounded-3xl p-5 flex flex-col space-y-3.5">
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3">
+                        <div>
+                            <h3 class="text-sm sm:text-base font-extrabold text-white flex items-center gap-2">
+                                <i data-lucide="message-square-heart" class="w-4 h-4 text-blue-400"></i>
+                                Luyện Giao Tiếp Người – AI & Chấm Điểm Speaking IELTS
+                            </h3>
+                            <p class="text-[11px] text-slate-400">Ngân hàng 20+ câu hỏi đa chủ đề + AI tạo thêm câu hỏi theo yêu cầu</p>
+                        </div>
+                        <select id="speakingModeSelect" onchange="filterSpeakingQuestions()" class="px-3 py-1.5 rounded-xl bg-brand-950 border border-white/15 text-xs text-white focus:outline-none">
+                            <option value="ALL">Tất cả cấp độ Speaking</option>
+                            <option value="Beginner Daily">Giao tiếp cơ bản (Mất gốc)</option>
+                            <option value="IELTS Part 1">IELTS Part 1 (Interview)</option>
+                            <option value="IELTS Part 2">IELTS Part 2 (Cue Card 2p)</option>
+                            <option value="IELTS Part 3">IELTS Part 3 (Discussion 8.0)</option>
+                        </select>
+                    </div>
+
+                    <!-- Speaking Topic Filter & AI Question Generator -->
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar" id="speakingTopicPills">
+                            <button onclick="setSpeakingTopic('ALL')" data-spktopic="ALL" class="spk-topic-btn active px-2.5 py-1 rounded-lg text-[11px] font-bold bg-blue-600 text-white shrink-0">Tất cả chủ đề</button>
+                            <button onclick="setSpeakingTopic('Daily & Hometown')" data-spktopic="Daily & Hometown" class="spk-topic-btn px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-brand-950 text-slate-300 border border-white/10 shrink-0">🏠 Đời sống & Quê hương</button>
+                            <button onclick="setSpeakingTopic('Study & Career')" data-spktopic="Study & Career" class="spk-topic-btn px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-brand-950 text-slate-300 border border-white/10 shrink-0">🎓 Học tập & Công việc</button>
+                            <button onclick="setSpeakingTopic('Technology & AI')" data-spktopic="Technology & AI" class="spk-topic-btn px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-brand-950 text-slate-300 border border-white/10 shrink-0">🤖 Công nghệ & AI</button>
+                            <button onclick="setSpeakingTopic('Environment & Travel')" data-spktopic="Environment & Travel" class="spk-topic-btn px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-brand-950 text-slate-300 border border-white/10 shrink-0">🌍 Môi trường & Du lịch</button>
+                            <button onclick="setSpeakingTopic('Culture & Society')" data-spktopic="Culture & Society" class="spk-topic-btn px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-brand-950 text-slate-300 border border-white/10 shrink-0">🎭 Văn hóa & Xã hội</button>
+                        </div>
+
+                        <!-- Question Picker & Generator Toolbar -->
+                        <div class="flex flex-wrap items-center gap-1.5">
+                            <select id="speakingQuestionDropdown" onchange="selectSpeakingQuestionFromBank(this.value)" class="flex-1 min-w-[200px] px-3 py-1.5 rounded-xl bg-brand-950 border border-white/15 text-xs text-slate-200 focus:outline-none">
+                                <!-- Populated via JS -->
+                            </select>
+                            <button onclick="pickRandomSpeakingQuestion()" class="btn-tactile px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-semibold text-amber-300 flex items-center gap-1 shrink-0" title="Đổi câu hỏi ngẫu nhiên">
+                                <i data-lucide="shuffle" class="w-3.5 h-3.5"></i> Đổi câu
+                            </button>
+                            <button onclick="generateAISpeakingQuestions()" id="genSpkQBtn" class="btn-tactile px-3 py-1.5 rounded-xl bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/30 text-xs font-bold text-blue-300 flex items-center gap-1 shrink-0">
+                                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> +5 câu AI
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Speaking Conversation Log -->
+                    <div id="speakingChatFeed" class="space-y-3 max-h-[300px] overflow-y-auto pr-1">
+                        <!-- Initial Examiner Prompt -->
+                    </div>
+
+                    <!-- User Speaking Input (Voice + Text) -->
+                    <div class="pt-2 border-t border-white/10 flex items-center gap-2">
+                        <button onclick="toggleSpeakingMic()" id="speakingMicBtn" class="btn-tactile p-3 rounded-2xl bg-rose-600 hover:bg-rose-500 text-white shrink-0 shadow-lg shadow-rose-600/25" title="Nói câu trả lời bằng Micro">
+                            <i data-lucide="mic" class="w-5 h-5"></i>
+                        </button>
+                        <input id="speakingTextInput" type="text" placeholder="Nói qua Micro hoặc gõ câu trả lời tiếng Anh của bạn..." class="flex-1 px-4 py-2.5 rounded-xl bg-brand-950 border border-white/15 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500" onkeydown="if(event.key==='Enter') submitSpeakingTurn()">
+                        <button onclick="submitSpeakingTurn()" id="speakingSendBtn" class="btn-tactile px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold shrink-0">
+                            Chấm điểm
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================
+             TAB 5: PHÒNG CHẤM ĐIỂM IELTS WRITING & NÂNG CẤP BAND 8.0+
+             ================================================================= -->
+        <section id="view-writing" class="tab-panel space-y-5">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+                <!-- Left Column: Essay Composer (6 cols) -->
+                <div class="lg:col-span-6 glass-panel rounded-3xl p-5 space-y-4">
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3">
+                        <div>
+                            <h2 class="text-base sm:text-lg font-extrabold text-white flex items-center gap-2">
+                                <i data-lucide="pen-tool" class="w-5 h-5 text-purple-400"></i>
+                                Phòng Luyện Viết & Chấm Điểm IELTS Writing
+                            </h2>
+                            <p class="text-xs text-slate-400">Kho 15 đề chuẩn mọi dạng bài + AI lập dàn ý & chấm 4 tiêu chí Band 8.0</p>
+                        </div>
+                        <span id="writingWordCount" class="px-2.5 py-1 rounded-xl bg-white/5 border border-white/10 font-mono text-xs text-slate-300">
+                            0 words
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-12 gap-2">
+                        <select id="writingTaskType" onchange="filterWritingBank()" class="sm:col-span-5 px-3 py-2 rounded-xl bg-brand-950 border border-white/15 text-xs text-white focus:outline-none">
+                            <option value="ALL">Tất cả dạng bài Writing (15 đề)</option>
+                            <option value="Foundation">Mất gốc: Viết đoạn văn ngắn (80-120 từ)</option>
+                            <option value="Task 1 Chart">Task 1: Line / Bar / Pie / Table</option>
+                            <option value="Task 1 ProcessMap">Task 1: Process Diagram & Map</option>
+                            <option value="Task 2 Opinion">Task 2: Agree or Disagree</option>
+                            <option value="Task 2 Discussion">Task 2: Discuss Both Views</option>
+                            <option value="Task 2 Problem">Task 2: Causes, Effects & Solutions</option>
+                        </select>
+                        <select id="writingPresetSelect" onchange="selectWritingPreset(this.value)" class="sm:col-span-7 px-3 py-2 rounded-xl bg-brand-950 border border-white/15 text-xs text-slate-200 focus:outline-none">
+                            <!-- Populated via JS -->
+                        </select>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="generateAIWritingPrompt()" id="genWritingTopicBtn" class="btn-tactile flex-1 px-3 py-2 rounded-xl bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/30 text-xs font-bold text-blue-300 flex items-center justify-center gap-1.5">
+                            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> AI Tạo đề Writing mới
+                        </button>
+                        <button onclick="getWritingOutlineHelp()" id="writingOutlineBtn" class="btn-tactile flex-1 px-3 py-2 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/30 text-xs font-bold text-amber-300 flex items-center justify-center gap-1.5">
+                            <i data-lucide="lightbulb" class="w-3.5 h-3.5"></i> Gợi ý dàn ý & Từ vựng 8.0
+                        </button>
+                    </div>
+
+                    <div>
+                        <label class="block text-[11px] font-semibold text-slate-400 mb-1">Đề bài (Topic / Question):</label>
+                        <textarea id="writingTopicInput" rows="3" class="w-full p-3 rounded-xl bg-brand-950 border border-white/15 text-xs text-slate-200 focus:outline-none focus:border-purple-500"></textarea>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center justify-between mb-1">
+                            <label class="text-[11px] font-semibold text-slate-400">Bài viết của bạn (hoặc tải ảnh chụp bài viết tay):</label>
+                            <label class="text-[11px] font-bold text-blue-400 hover:underline cursor-pointer flex items-center gap-1">
+                                <i data-lucide="camera" class="w-3.5 h-3.5"></i> Chụp / Tải ảnh bài viết tay
+                                <input type="file" id="writingImageInput" accept="image/*" class="hidden" onchange="handleWritingImageUpload(event)">
+                            </label>
+                        </div>
+                        <div id="writingImageBadge" class="hidden mb-2 px-3 py-1.5 rounded-xl bg-blue-500/15 border border-blue-500/30 text-xs text-blue-200 flex items-center justify-between">
+                            <span>📷 Đã đính kèm ảnh chụp bài viết tay để AI đọc & chấm điểm</span>
+                            <button onclick="clearWritingImage()" class="text-rose-300 font-bold">Xóa</button>
+                        </div>
+                        <textarea id="writingEssayInput" oninput="updateWritingWordCount()" rows="9" placeholder="Viết bài tiếng Anh của bạn tại đây..." class="w-full p-3.5 rounded-2xl bg-brand-950 border border-white/15 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 leading-relaxed"></textarea>
+                    </div>
+
+                    <button onclick="gradeWritingEssay()" id="gradeWritingBtn" class="btn-tactile w-full py-3 rounded-2xl bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 text-white font-extrabold text-xs sm:text-sm shadow-lg shadow-purple-600/25 flex items-center justify-center gap-2">
+                        <i data-lucide="award" class="w-4 h-4"></i>
+                        Chấm Điểm Chi Tiết & Viết Lại Chuẩn Band 8.0+
+                    </button>
+                </div>
+
+                <!-- Right Column: Examiner Band Feedback & Band 8.0 Rewrite (6 cols) -->
+                <div class="lg:col-span-6 glass-panel rounded-3xl p-5 space-y-4">
+                    <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                        <h3 class="text-sm sm:text-base font-extrabold text-white flex items-center gap-2">
+                            <i data-lucide="file-check-2" class="w-4 h-4 text-emerald-400"></i>
+                            Báo Cáo Chấm Điểm Giám Khảo IELTS
+                        </h3>
+                        <span class="px-2.5 py-0.5 rounded-full bg-purple-500/20 text-purple-300 text-[10px] font-bold">4 Tiêu Chí Chuẩn</span>
+                    </div>
+
+                    <div id="writingGradingOutput" class="rounded-2xl bg-brand-950/90 border border-white/10 p-4 text-xs sm:text-sm text-slate-200 leading-relaxed max-h-[540px] overflow-y-auto space-y-3">
+                        <div class="text-center py-10 space-y-2">
+                            <div class="w-12 h-12 rounded-2xl bg-purple-500/15 text-purple-400 flex items-center justify-center mx-auto">
+                                <i data-lucide="sparkles" class="w-6 h-6"></i>
+                            </div>
+                            <p class="font-bold text-white text-sm">Chưa có bài chấm nào</p>
+                            <p class="text-xs text-slate-400 max-w-md mx-auto">
+                                Hãy chọn đề bài bên trái, bấm <strong>"Gợi ý dàn ý & Từ vựng 8.0"</strong> nếu cần trợ giúp, hoặc viết bài và bấm <strong>"Chấm Điểm Chi Tiết"</strong> để nhận nhận xét chuẩn giám khảo IELTS.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Native iOS Fixed Bottom Tab Bar (Mobile Only) -->
+    <nav class="md:hidden ios-bottom-bar fixed bottom-0 inset-x-0 z-40 bg-brand-950/95 backdrop-blur-xl border-t border-white/10 px-1.5 pt-1.5">
+        <div class="grid grid-cols-5 gap-1">
+            <button onclick="switchMainTab('roadmap')" id="mob-btn-roadmap" class="mob-tab-btn btn-tactile flex flex-col items-center justify-center py-1.5 rounded-xl bg-blue-600/20 text-blue-400">
+                <i data-lucide="map" class="w-4 h-4"></i>
+                <span class="text-[10px] font-bold mt-0.5">Lộ trình</span>
+            </button>
+            <button onclick="switchMainTab('qa')" id="mob-btn-qa" class="mob-tab-btn btn-tactile flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-400">
+                <i data-lucide="message-circle-question" class="w-4 h-4"></i>
+                <span class="text-[10px] font-semibold mt-0.5">Hỏi & Ảnh</span>
+            </button>
+            <button onclick="switchMainTab('vocab')" id="mob-btn-vocab" class="mob-tab-btn btn-tactile flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-400">
+                <i data-lucide="volume-2" class="w-4 h-4"></i>
+                <span class="text-[10px] font-semibold mt-0.5">Từ & Âm</span>
+            </button>
+            <button onclick="switchMainTab('speaking')" id="mob-btn-speaking" class="mob-tab-btn btn-tactile flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-400">
+                <i data-lucide="mic" class="w-4 h-4"></i>
+                <span class="text-[10px] font-semibold mt-0.5">Speaking</span>
+            </button>
+            <button onclick="switchMainTab('writing')" id="mob-btn-writing" class="mob-tab-btn btn-tactile flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-400">
+                <i data-lucide="pen-tool" class="w-4 h-4"></i>
+                <span class="text-[10px] font-semibold mt-0.5">Writing</span>
+            </button>
+        </div>
+    </nav>
+
+    <script>
+        // =========================================================================
+        // 1. COMPREHENSIVE CURRICULUM, METHODS, CREATORS & QUESTION BANKS
+        // =========================================================================
+        const SIX_MONTH_ROADMAP = [
+            {
+                month: 'Tháng 1',
+                target: 'Band 0 → 3.5',
+                title: 'Xóa Mù Ngữ Âm IPA & Ngữ Pháp Cốt Lõi',
+                focus: 'Làm chủ 44 âm IPA, trọng âm từ, 6 thì cơ bản, cấu trúc S-V-O và 600 từ vựng sinh tồn.',
+                color: 'from-blue-600 to-cyan-500'
+            },
+            {
+                month: 'Tháng 2',
+                target: 'Band 3.5 → 4.5',
+                title: 'Nghe Chép Chính Tả & Câu Phức Cơ Bản',
+                focus: 'Luyện Dictation 15 phút/ngày, mệnh đề quan hệ, câu điều kiện, mở rộng 1.200 từ vựng theo chủ đề.',
+                color: 'from-cyan-500 to-emerald-500'
+            },
+            {
+                month: 'Tháng 3',
+                target: 'Band 4.5 → 5.5',
+                title: 'Làm Quen 4 Kỹ Năng IELTS Chuẩn Format',
+                focus: 'Kỹ thuật Skimming/Scanning Reading, Listening Part 1-2, Speaking Part 1 và viết đoạn văn chuẩn.',
+                color: 'from-emerald-500 to-teal-500'
+            },
+            {
+                month: 'Tháng 4',
+                target: 'Band 5.5 → 6.5',
+                title: 'Tư Duy Paraphrase & Cấu Trúc Writing Task 1-2',
+                focus: 'Thành thạo biểu đồ Task 1, 4 dạng bài luận Task 2, Speaking Part 2 Cue Card trong 2 phút.',
+                color: 'from-amber-500 to-orange-500'
+            },
+            {
+                month: 'Tháng 5',
+                target: 'Band 6.5 → 7.5',
+                title: 'Nâng Cấp Từ Vựng C1 & Phản Biện Part 3',
+                focus: 'Áp dụng Collocations học thuật, nối âm tự nhiên, luyện giải đề Cambridge 15–19 bấm giờ thật.',
+                color: 'from-purple-600 to-pink-500'
+            },
+            {
+                month: 'Tháng 6',
+                target: 'Band 7.5 → 8.0+',
+                title: 'Tối Ưu Hóa Điểm Yếu & Thực Chiến Đề Khó',
+                focus: 'Chữa lỗi chuyên sâu Writing/Speaking cùng Giám khảo AI, hoàn thiện tốc độ & độ chính xác 8.0+.',
+                color: 'from-rose-600 to-amber-500'
+            }
+        ];
+
+        const DAILY_TASKS = [
+            { id: 't1', title: 'Học & phát âm chuẩn 15 từ vựng mới', desc: 'Nghe giọng AI & đọc lại qua Micro đạt 90%+', done: false },
+            { id: 't2', title: 'Nghe chép chính tả (Dictation) 15 phút', desc: 'Luyện độ nhạy âm cuối & nối âm bản xứ', done: false },
+            { id: 't3', title: 'Hội thoại Speaking cùng Giám khảo AI', desc: 'Trả lời ít nhất 3 câu hỏi & xem nhận xét Band', done: false },
+            { id: 't4', title: 'Viết 1 đoạn văn hoặc 1 bài IELTS Writing', desc: 'Nộp cho Examiner AI chấm & học bài mẫu 8.0', done: false }
+        ];
+
+        const SCIENCE_METHODS = [
+            {
+                badge: 'Trí nhớ dài hạn',
+                title: '1. Spaced Repetition (SRS - Ebbinghaus)',
+                desc: 'Ôn lại từ vựng và cấu trúc đúng thời điểm não sắp quên (Ngày 1 → Ngày 3 → Ngày 7 → Ngày 14 → Ngày 28), giúp tăng khả năng ghi nhớ gấp 3 lần so với học nhồi.'
+            },
+            {
+                badge: 'Truy xuất chủ động',
+                title: '2. Active Recall (Gợi nhớ chủ động)',
+                desc: 'Ép não tự nhớ nghĩa, phát âm và viết ra câu trả lời trước khi xem đáp án (qua Dictation & Speaking), tạo liên kết thần kinh sâu thay vì chỉ đọc lướt.'
+            },
+            {
+                badge: 'Thụ đắc ngôn ngữ',
+                title: '3. Comprehensible Input (i + 1 - Krashen)',
+                desc: 'Tiếp xúc nguồn nghe/đọc hiểu được 75–80% nội dung và chỉ chứa 20% từ mới vừa sức, giúp người mất gốc tiến bộ tự nhiên không bị quá tải.'
+            },
+            {
+                badge: 'Chuẩn hóa ngữ âm',
+                title: '4. Dictation + Shadowing (Nói đuổi)',
+                desc: 'Nghe chép từng âm cuối kết hợp nói đuổi đồng thời theo ngữ điệu bản xứ (Alexander Arguelles) giúp sửa triệt để lỗi phát âm kiểu Việt.'
+            },
+            {
+                badge: 'Tối ưu hiệu suất',
+                title: '5. Deliberate Practice (Luyện có chủ đích)',
+                desc: 'Tập trung sửa đúng điểm yếu (âm /θ/, chia thì quá khứ, lỗi liên kết câu) với phản hồi chấm điểm tức thì từ AI thay vì luyện dàn trải.'
+            },
+            {
+                badge: 'Tư duy hệ thống',
+                title: '6. Linearthinking & Mind-mapping',
+                desc: 'Đơn giản hóa câu phức tạp theo cấu trúc S-V-O cốt lõi khi đọc hiểu và phát triển luận điểm theo chuỗi nguyên nhân – kết quả trong Writing.'
+            }
+        ];
+
+        const CREATORS_AND_CENTERS = [
+            {
+                tag: 'YouTuber Tự Học Thực Chiến',
+                name: 'Gấu Forum & Cộng đồng Tự Học Tiếng Anh',
+                detail: 'Nổi tiếng với phong cách chia sẻ gần gũi, tập trung vào phương pháp Immersion (đắm mình trong tiếng Anh qua video/podcast đời sống), luyện phản xạ tự nhiên và xây dựng thói quen tự học kỷ luật từ con số 0.'
+            },
+            {
+                tag: 'Cựu Giám Khảo IELTS Quốc Tế',
+                name: 'IELTS Simon & IELTS Liz',
+                detail: 'Hai tượng đài dạy IELTS miễn phí chuẩn mực nhất thế giới: tư duy viết bài mạch lạc, không nhồi nhét từ vựng hoa mỹ sáo rỗng mà đánh trúng 4 tiêu chí chấm điểm của Hội đồng thi.'
+            },
+            {
+                tag: 'YouTubers & Chuyên Gia Việt Nam',
+                name: 'Khánh Vy, IELTS Nguyễn Huyền, Ngọc Bách',
+                detail: 'Tham khảo kỹ thuật ghi chép từ vựng bằng Sơ đồ tư duy (Mindmap), luyện Shadowing theo người bản xứ và bộ từ vựng/collocations phân tích theo chủ đề thi thật.'
+            },
+            {
+                tag: 'Tổ Chức Đồng Sở Hữu IELTS',
+                name: 'British Council (từ 1993) & IDP IELTS',
+                detail: 'Nguồn tham khảo chuẩn xác nhất về Band Descriptors (tiêu chí chấm 0–9.0), cấu trúc phòng thi thật và kho tài liệu BBC Learning English / IELTS Prepare.'
+            },
+            {
+                tag: 'Trung Tâm Học Thuật Lâu Đời',
+                name: 'ACET (từ 1994), VUS (từ 1997), KTDC (từ 2009)',
+                detail: 'Nổi bật với lộ trình đào tạo tiếng Anh học thuật (Academic English) bài bản từ nền tảng cơ bản lên tư duy phản biện, giúp học viên vững gốc ngữ pháp và phát âm.'
+            },
+            {
+                tag: 'Hệ Thống Luyện Thi Chuyên Sâu',
+                name: 'ZIM Academy, The IELTS Workshop, DOL English',
+                detail: 'Tham khảo mô hình phân tầng lớp từ Foundation (mất gốc) lên 7.5–8.0+, cá nhân hóa lỗ hổng kiến thức và phương pháp tư duy tuyến tính Linearthinking.'
+            }
+        ];
+
+        let QA_PROMPT_BANK = [
+            { cat: 'Grammar', label: '📚 Phân biệt Quá khứ đơn & Hiện tại hoàn thành', prompt: 'Tôi đang mất gốc hoàn toàn, hãy giải thích dễ hiểu nhất sự khác nhau giữa Thì Quá khứ đơn và Hiện tại hoàn thành kèm 5 ví dụ dùng trong IELTS Speaking.' },
+            { cat: 'Grammar', label: '🧩 Trật tự từ loại Danh - Động - Tính - Trạng', prompt: 'Giải thích cho người mất gốc quy tắc sắp xếp Danh từ, Động từ, Tính từ, Trạng từ trong câu tiếng Anh và cách nhận biết đuôi từ loại.' },
+            { cat: 'Grammar', label: '🔗 Cách dùng Mệnh đề quan hệ (who, which, that)', prompt: 'Hướng dẫn cách ghép 2 câu đơn thành câu phức bằng mệnh đề quan hệ (who, which, that, where) để tăng điểm ngữ pháp IELTS.' },
+            { cat: 'Grammar', label: '⚖️ Câu điều kiện loại 1, 2, 3 trong IELTS', prompt: 'Tóm tắt công thức và cách ứng dụng Câu điều kiện loại 1, 2, 3 vào IELTS Speaking Part 3 và Writing Task 2 kèm ví dụ dịch nghĩa.' },
+            { cat: 'Pronunciation', label: '🗣️ Quy tắc phát âm & nối âm IPA cơ bản', prompt: 'Hướng dẫn tôi cách đọc bảng phiên âm 44 âm IPA và 3 quy tắc nối âm tự nhiên nhất cho người mới bắt đầu.' },
+            { cat: 'Pronunciation', label: '🔚 Cách đọc đuôi -s/-es và -ed chuẩn 100%', prompt: 'Cho tôi mẹo nhớ nhanh quy tắc phát âm đuôi -s/-es và đuôi -ed không bao giờ nhầm kèm 10 từ hay gặp trong thi nói.' },
+            { cat: 'Pronunciation', label: '🎵 Quy tắc đánh trọng âm từ 2 và 3 âm tiết', prompt: 'Tổng hợp các quy tắc đánh trọng âm dễ nhớ nhất cho người Việt học lại tiếng Anh từ đầu.' },
+            { cat: 'Pronunciation', label: '👄 Sửa các âm người Việt hay sai (/θ/, /ð/, /ʃ/, /dʒ/)', prompt: 'Hướng dẫn đặt vị trí lưỡi và khẩu hình miệng để phát âm chuẩn các âm khó /θ/, /ð/, /ʃ/, /tʃ/, /dʒ/.' },
+            { cat: 'ReadingListening', label: '🔍 Kỹ thuật Skimming & Scanning đọc hiểu nhanh', prompt: 'Giải thích cách áp dụng Skimming (đọc lướt lấy ý chính) và Scanning (quét từ khóa) cho người mới làm quen IELTS Reading.' },
+            { cat: 'ReadingListening', label: '✅ Mẹo làm dạng True / False / Not Given', prompt: 'Hướng dẫn từng bước phân biệt False và Not Given trong IELTS Reading kèm 3 ví dụ minh họa rõ ràng.' },
+            { cat: 'ReadingListening', label: '🎧 Chiến thuật nghe điền từ (Form/Note Completion)', prompt: 'Cách đoán từ loại và bẫy đánh vần, số đếm trong IELTS Listening Part 1 cho người mới bắt đầu.' },
+            { cat: 'ReadingListening', label: '🔄 Kỹ thuật Paraphrase từ khóa Đọc & Nghe', prompt: 'Cho tôi 15 cặp từ đồng nghĩa thường xuyên xuất hiện để paraphrase giữa câu hỏi và bài đọc trong IELTS.' },
+            { cat: 'Band8', label: '🚀 10 cấu trúc ăn điểm Band 8.0 Speaking & Writing', prompt: 'Cho tôi 10 cấu trúc câu ăn điểm Band 8.0 IELTS dễ áp dụng cho cả Speaking và Writing kèm dịch nghĩa tiếng Việt.' },
+            { cat: 'Band8', label: '💎 Nâng cấp 15 từ vựng cơ bản lên Band 8.0', prompt: 'Lập bảng nâng cấp 15 từ vựng cơ bản (như good, bad, important, big, solve) sang từ vựng học thuật Band 8.0 kèm ví dụ.' },
+            { cat: 'Band8', label: '🧠 Cách triển khai ý tưởng Speaking Part 3 không bí ý', prompt: 'Hướng dẫn công thức A.R.E.A (Answer - Reason - Example - Alternative) để trả lời mọi câu hỏi khó trong IELTS Speaking Part 3.' },
+            { cat: 'Band8', label: '✍️ Cấu trúc chuẩn viết mở bài & thân bài Task 2', prompt: 'Hướng dẫn khung sườn viết IELTS Writing Task 2 chuẩn phong cách cựu giám khảo IELTS Simon đạt Band 8.0.' }
+        ];
+        let activeQaCategory = 'ALL';
+
+        let VOCAB_DATABASE = [
+            {
+                word: 'acquire',
+                pos: 'v.',
+                ipa: '/əˈkwaɪər/',
+                level: 'Foundation',
+                meaning: 'Đạt được, tiếp thu (kiến thức, kỹ năng)',
+                collocation: 'acquire a language / acquire new skills',
+                example: 'Children acquire their mother tongue naturally without formal instruction.'
+            },
+            {
+                word: 'crucial',
+                pos: 'adj.',
+                ipa: '/ˈkruː.ʃəl/',
+                level: 'Foundation',
+                meaning: 'Quan trọng, cốt yếu',
+                collocation: 'play a crucial role in',
+                example: 'Daily practice plays a crucial role in mastering English pronunciation.'
+            },
+            {
+                word: 'consistent',
+                pos: 'adj.',
+                ipa: '/kənˈsɪs.tənt/',
+                level: 'Foundation',
+                meaning: 'Kiên trì, đều đặn, nhất quán',
+                collocation: 'consistent effort / remain consistent',
+                example: 'Consistent effort over six months can transform a beginner into a fluent speaker.'
+            },
+            {
+                word: 'obstacle',
+                pos: 'n.',
+                ipa: '/ˈɒb.stə.kəl/',
+                level: 'Foundation',
+                meaning: 'Trở ngại, rào cản',
+                collocation: 'overcome an obstacle',
+                example: 'Fear of making mistakes is the biggest obstacle when learning to speak English.'
+            },
+            {
+                word: 'alleviate',
+                pos: 'v.',
+                ipa: '/əˈliː.vi.eɪt/',
+                level: 'Band 6.5',
+                meaning: 'Làm giảm bớt, xoa dịu (vấn đề, gánh nặng)',
+                collocation: 'alleviate traffic congestion / poverty',
+                example: 'Investing in public transport can significantly alleviate urban traffic congestion.'
+            },
+            {
+                word: 'deteriorate',
+                pos: 'v.',
+                ipa: '/dɪˈtɪə.ri.ə.reɪt/',
+                level: 'Band 6.5',
+                meaning: 'Trở nên tồi tệ hơn, suy thoái',
+                collocation: 'deteriorate rapidly / air quality deteriorates',
+                example: 'Without strict regulations, air quality in major cities will continue to deteriorate.'
+            },
+            {
+                word: 'vulnerable',
+                pos: 'adj.',
+                ipa: '/ˈvʌl.nər.ə.bəl/',
+                level: 'Band 6.5',
+                meaning: 'Dễ bị tổn thương, dễ bị ảnh hưởng',
+                collocation: 'vulnerable to / vulnerable groups',
+                example: 'Young children are particularly vulnerable to the negative influence of social media.'
+            },
+            {
+                word: 'sustainable',
+                pos: 'adj.',
+                ipa: '/səˈsteɪ.nə.bəl/',
+                level: 'Band 6.5',
+                meaning: 'Bền vững, lâu dài',
+                collocation: 'sustainable development / energy',
+                example: 'Transitioning to renewable energy is vital for sustainable economic development.'
+            },
+            {
+                word: 'ubiquitous',
+                pos: 'adj.',
+                ipa: '/juːˈbɪk.wɪ.təs/',
+                level: 'Band 8.0',
+                meaning: 'Có mặt ở khắp mọi nơi, phổ biến rộng rãi',
+                collocation: 'become increasingly ubiquitous',
+                example: 'Smartphones have become ubiquitous in modern society, transforming how we communicate.'
+            },
+            {
+                word: 'indispensable',
+                pos: 'adj.',
+                ipa: '/ˌɪn.dɪˈspen.sə.bəl/',
+                level: 'Band 8.0',
+                meaning: 'Không thể thiếu được, tối cần thiết',
+                collocation: 'an indispensable part of',
+                example: 'Artificial intelligence is rapidly becoming an indispensable tool in personalized education.'
+            },
+            {
+                word: 'mitigate',
+                pos: 'v.',
+                ipa: '/ˈmɪt.ɪ.ɡeɪt/',
+                level: 'Band 8.0',
+                meaning: 'Giảm thiểu tác động tiêu cực',
+                collocation: 'mitigate the adverse effects of',
+                example: 'Governments must take immediate action to mitigate the adverse effects of climate change.'
+            },
+            {
+                word: 'conducive',
+                pos: 'adj.',
+                ipa: '/kənˈdjuː.sɪv/',
+                level: 'Band 8.0',
+                meaning: 'Có lợi, tạo điều kiện thuận lợi cho',
+                collocation: 'conducive to learning / productivity',
+                example: 'A quiet and well-lit study environment is highly conducive to deep concentration.'
+            },
+            {
+                word: 'proliferate',
+                pos: 'v.',
+                ipa: '/prəˈlɪf.ə.reɪt/',
+                level: 'Band 8.0',
+                meaning: 'Sinh sôi, phát triển nhanh chóng về số lượng',
+                collocation: 'online platforms have proliferated',
+                example: 'In recent years, online learning platforms have proliferated across the globe.'
+            },
+            {
+                word: 'exacerbate',
+                pos: 'v.',
+                ipa: '/ɪɡˈzæs.ə.beɪt/',
+                level: 'Band 8.0',
+                meaning: 'Làm trầm trọng thêm (tình huống xấu)',
+                collocation: 'exacerbate the problem / inequality',
+                example: 'Unplanned urbanization can exacerbate housing shortages and environmental pollution.'
+            }
+        ];
+
+        let LISTENING_EXERCISES = [
+            {
+                level: 'Foundation (Mất gốc)',
+                sentence: 'Consistent daily practice is the secret to speaking English with confidence.',
+                vi: 'Luyện tập đều đặn hàng ngày là bí quyết để nói tiếng Anh tự tin.'
+            },
+            {
+                level: 'Foundation (Đời sống)',
+                sentence: 'Could you tell me how to get to the nearest train station from here?',
+                vi: 'Bạn có thể chỉ cho tôi đường đến ga tàu gần nhất từ đây không?'
+            },
+            {
+                level: 'Foundation (Giao tiếp)',
+                sentence: 'I usually spend two hours every evening listening to English podcasts.',
+                vi: 'Tôi thường dành hai tiếng mỗi tối để nghe các chương trình podcast tiếng Anh.'
+            },
+            {
+                level: 'Band 5.5 - 6.0 (Education)',
+                sentence: 'Many university students prefer studying online because it offers greater flexibility.',
+                vi: 'Nhiều sinh viên đại học thích học trực tuyến vì nó mang lại sự linh hoạt cao hơn.'
+            },
+            {
+                level: 'Band 5.5 - 6.0 (Work)',
+                sentence: 'Effective communication skills are essential for career advancement in international companies.',
+                vi: 'Kỹ năng giao tiếp hiệu quả rất thiết yếu cho sự thăng tiến nghề nghiệp tại các công ty quốc tế.'
+            },
+            {
+                level: 'Band 6.5 - 7.0 (Environment)',
+                sentence: 'Renewable energy sources are essential for reducing global carbon emissions.',
+                vi: 'Các nguồn năng lượng tái tạo rất thiết yếu để giảm lượng khí thải carbon toàn cầu.'
+            },
+            {
+                level: 'Band 6.5 - 7.0 (Health)',
+                sentence: 'Regular physical exercise not only strengthens the body but also relieves mental stress.',
+                vi: 'Tập thể dục thường xuyên không chỉ tăng cường sức khỏe thể chất mà còn giải tỏa căng thẳng tinh thần.'
+            },
+            {
+                level: 'Band 6.5 - 7.0 (Society)',
+                sentence: 'Public libraries provide equal access to knowledge for people from all walks of life.',
+                vi: 'Thư viện công cộng mang lại quyền tiếp cận tri thức bình đẳng cho mọi tầng lớp trong xã hội.'
+            },
+            {
+                level: 'Band 7.5 - 8.0 (Technology)',
+                sentence: 'Technological advancements have fundamentally reshaped the contemporary labor market.',
+                vi: 'Những tiến bộ công nghệ đã định hình lại một cách căn bản thị trường lao động đương đại.'
+            },
+            {
+                level: 'Band 7.5 - 8.0 (Urbanization)',
+                sentence: 'Rapid urbanization often leads to severe traffic congestion and housing shortages.',
+                vi: 'Quá trình đô thị hóa nhanh chóng thường dẫn đến ùn tắc giao thông nghiêm trọng và thiếu hụt nhà ở.'
+            },
+            {
+                level: 'Band 8.0+ Academic',
+                sentence: 'Fostering critical thinking skills should be the paramount objective of higher education.',
+                vi: 'Nuôi dưỡng kỹ năng tư duy phản biện nên là mục tiêu tối thượng của giáo dục đại học.'
+            },
+            {
+                level: 'Band 8.0+ Academic',
+                sentence: 'International cooperation is indispensable to mitigating the adverse impacts of climate change.',
+                vi: 'Hợp tác quốc tế là yếu tố không thể thiếu để giảm thiểu các tác động tiêu cực của biến đổi khí hậu.'
+            }
+        ];
+
+        let SPEAKING_QUESTION_BANK = [
+            { mode: 'Beginner Daily', topic: 'Daily & Hometown', q: "Hello! Let's start simple: What is your name, where do you live, and what do you usually do on weekends?" },
+            { mode: 'Beginner Daily', topic: 'Study & Career', q: "Are you a student or are you working right now? What do you like most about your daily routine?" },
+            { mode: 'Beginner Daily', topic: 'Daily & Hometown', q: "What kind of food or drinks do you enjoy the most, and can you cook any traditional dishes?" },
+            { mode: 'Beginner Daily', topic: 'Environment & Travel', q: "If you had a free week for vacation, where would you like to travel and who would you go with?" },
+            { mode: 'IELTS Part 1', topic: 'Daily & Hometown', q: "Let's talk about your hometown. What is your hometown famous for, and has it changed much in recent years?" },
+            { mode: 'IELTS Part 1', topic: 'Study & Career', q: "Do you prefer studying or working alone, or do you prefer being part of a team? Why?" },
+            { mode: 'IELTS Part 1', topic: 'Technology & AI', q: "How often do you use smartphones or artificial intelligence tools in your daily study or work?" },
+            { mode: 'IELTS Part 1', topic: 'Culture & Society', q: "Do you enjoy reading books or watching movies in your spare time? What genre do you prefer?" },
+            { mode: 'IELTS Part 1', topic: 'Environment & Travel', q: "Do you prefer living in a bustling big city or a peaceful countryside area? Why?" },
+            { mode: 'IELTS Part 1', topic: 'Daily & Hometown', q: "How do you usually manage your time when you have many deadlines to meet?" },
+            { mode: 'IELTS Part 2', topic: 'Study & Career', q: "Cue Card: Describe a skill you would like to learn in the future. You should say: what the skill is, how you would learn it, how difficult it might be, and explain why it would be useful to you." },
+            { mode: 'IELTS Part 2', topic: 'Technology & AI', q: "Cue Card: Describe a piece of technology or app that you find very useful. You should say: what it is, when you started using it, what you use it for, and explain how it has improved your life." },
+            { mode: 'IELTS Part 2', topic: 'Environment & Travel', q: "Cue Card: Describe a memorable journey or trip you took. You should say: where you went, how you traveled, what you saw and did there, and explain why it was unforgettable." },
+            { mode: 'IELTS Part 2', topic: 'Culture & Society', q: "Cue Card: Describe a person who has inspired you to achieve an important goal. You should say: who this person is, how you know them, what they did to inspire you, and explain how you felt." },
+            { mode: 'IELTS Part 2', topic: 'Daily & Hometown', q: "Cue Card: Describe a quiet place where you like to go to relax or study. You should say: where it is, how often you go there, what you do there, and explain why you like this place." },
+            { mode: 'IELTS Part 3', topic: 'Technology & AI', q: "In your opinion, how has artificial intelligence changed the way students acquire foreign languages today? Could AI ever completely replace human teachers?" },
+            { mode: 'IELTS Part 3', topic: 'Environment & Travel', q: "Some people argue that protecting the environment is the responsibility of governments rather than individuals. To what extent do you agree with this view?" },
+            { mode: 'IELTS Part 3', topic: 'Study & Career', q: "Why do many young people today change jobs more frequently than previous generations? Is this a positive or negative trend for society?" },
+            { mode: 'IELTS Part 3', topic: 'Culture & Society', q: "How does globalization affect local traditions and cultural identity in developing countries?" },
+            { mode: 'IELTS Part 3', topic: 'Technology & AI', q: "What are the potential risks of relying too heavily on social media for news and information?" }
+        ];
+        let activeSpeakingTopic = 'ALL';
+
+        let WRITING_PROMPT_BANK = [
+            { type: 'Foundation', title: '[Mất gốc] Lợi ích của việc tự học tiếng Anh mỗi ngày', prompt: 'Write a short paragraph (80–120 words) about why learning English every day is important for your future career and personal growth.' },
+            { type: 'Foundation', title: '[Mất gốc] Mô tả thói quen học tập hiệu quả của bạn', prompt: 'Write a short paragraph (80–120 words) describing your daily study routine and how you stay motivated when facing difficulties.' },
+            { type: 'Task 2 Opinion', title: '[Task 2 Opinion] Trí tuệ nhân tạo (AI) có thay thế giáo viên?', prompt: 'Some people think that artificial intelligence will replace most human teachers in the future. To what extent do you agree or disagree?' },
+            { type: 'Task 2 Opinion', title: '[Task 2 Opinion] Đánh thuế cao thực phẩm nhanh để bảo vệ sức khỏe', prompt: 'Some people believe that governments should impose higher taxes on fast food to reduce obesity and health problems. To what extent do you agree or disagree?' },
+            { type: 'Task 2 Opinion', title: '[Task 2 Opinion] Bảo vệ môi trường ở cấp độ quốc tế hay cá nhân?', prompt: 'Environmental problems are too big for individual countries and individual people to address. In other words, we have reached the stage where the only way to protect the environment is at an international level. To what extent do you agree or disagree?' },
+            { type: 'Task 2 Discussion', title: '[Task 2 Discussion] Đại học dạy kiến thức hàn lâm hay kỹ năng việc làm?', prompt: 'Some people believe that universities should focus on providing academic knowledge, while others think they should prepare students for employment. Discuss both views and give your own opinion.' },
+            { type: 'Task 2 Discussion', title: '[Task 2 Discussion] Làm việc từ xa (Remote Work) hay tại văn phòng?', prompt: 'In many countries, people are increasingly working from home rather than commuting to an office. Discuss the advantages and disadvantages of this trend and give your opinion.' },
+            { type: 'Task 2 Discussion', title: '[Task 2 Discussion] Sống ở thành phố lớn hay vùng nông thôn?', prompt: 'Some people prefer to live in large cities, whereas others feel life is much better in the countryside. Discuss both views and give your own opinion.' },
+            { type: 'Task 2 Problem', title: '[Task 2 Problem/Solution] Nguyên nhân & giải pháp nghiện mạng xã hội', prompt: 'Nowadays, many young people spend a significant amount of time on social media platforms. What are the causes of this phenomenon, and what measures can be taken to reduce its negative impacts?' },
+            { type: 'Task 2 Problem', title: '[Task 2 Problem/Solution] Ùn tắc giao thông & ô nhiễm đô thị', prompt: 'In many major cities around the world, traffic congestion and air pollution are becoming increasingly severe. What are the primary causes of these issues, and how can governments solve them?' },
+            { type: 'Task 1 Chart', title: '[Task 1 Line Graph] Tỷ lệ sử dụng năng lượng tái tạo (2000–2025)', prompt: 'The line graph illustrates the percentage of electricity generated from renewable sources (solar, wind, and hydro) in four countries between 2000 and 2025. Summarize the information by selecting and reporting the main features, and make comparisons where relevant.' },
+            { type: 'Task 1 Chart', title: '[Task 1 Bar Chart] Chi tiêu của sinh viên cho giáo dục, nhà ở và giải trí', prompt: 'The bar chart compares the average monthly expenditure of university students on accommodation, tuition, food, and leisure activities across three countries in 2024. Summarize the main features and make comparisons.' },
+            { type: 'Task 1 Chart', title: '[Task 1 Pie & Table] Nguồn nước tiêu thụ theo ngành công nghiệp và nông nghiệp', prompt: 'The pie charts compare water usage across agricultural, industrial, and domestic sectors in developed and developing nations. Summarize the key trends and make relevant comparisons.' },
+            { type: 'Task 1 ProcessMap', title: '[Task 1 Process] Quy trình tái chế chai nhựa thành sợi vải', prompt: 'The diagram illustrates the multi-stage process of recycling plastic bottles into polyester fabric for clothing manufacturing. Summarize the information by describing the main stages clearly.' },
+            { type: 'Task 1 ProcessMap', title: '[Task 1 Map] Sự thay đổi của thị trấn ven biển từ 1995 đến nay', prompt: 'The two maps show the structural developments that took place in the coastal town of Meadowside between 1995 and the present day. Summarize the main changes and make comparisons.' }
+        ];
+
+        // =========================================================================
+        // 2. APPLICATION STATE & CORE HELPERS
+        // =========================================================================
+        const apiKey = ""; // Injected at runtime by Canvas
+        let activeVocabLevel = 'ALL';
+        let currentTargetWord = VOCAB_DATABASE[0];
+        let currentListeningIdx = 0;
+        let qaChatHistory = [];
+        let pendingQaImageBase64 = null;
+        let pendingQaImageMime = null;
+        let pendingWritingImageBase64 = null;
+        let pendingWritingImageMime = null;
+        let speakingHistory = [];
+        let activeAudioPlayer = null;
+        let isSpeakingRecording = false;
+        let speechRecognizer = null;
+
+        function safeRefreshIcons() {
+            if (window.lucide && typeof window.lucide.createIcons === 'function') {
+                window.lucide.createIcons();
+            }
+        }
+
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toastContainer');
+            if (!container) return;
+            const toast = document.createElement('div');
+            const styles = {
+                info: 'bg-slate-900/95 border-blue-500/40 text-blue-100',
+                success: 'bg-emerald-950/95 border-emerald-500/40 text-emerald-100',
+                error: 'bg-rose-950/95 border-rose-500/40 text-rose-100'
+            };
+            toast.className = `pointer-events-auto px-4 py-3 rounded-2xl border backdrop-blur-md shadow-2xl text-xs font-medium transition-all duration-300 ${styles[type] || styles.info}`;
+            toast.textContent = message;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(-8px)';
+                setTimeout(() => toast.remove(), 280);
+            }, 3400);
+        }
+
+        function formatMarkdown(text) {
+            if (!text) return '';
+            return text
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/\*\*(.*?)\*\*/g, '<strong class="text-white font-bold">$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em class="text-blue-200">$1</em>')
+                .replace(/^### (.*$)/gim, '<h4 class="text-xs sm:text-sm font-extrabold text-amber-300 mt-3 mb-1">$1</h4>')
+                .replace(/^## (.*$)/gim, '<h3 class="text-sm sm:text-base font-extrabold text-white mt-3 mb-1">$1</h3>')
+                .replace(/^\d+\. (.*$)/gim, '<div class="ml-3 my-1 text-slate-200">• $1</div>')
+                .replace(/^[-*] (.*$)/gim, '<div class="ml-3 my-1 text-slate-200">• $1</div>')
+                .replace(/\n\n/g, '</p><p class="mt-2">')
+                .replace(/\n/g, '<br>');
+        }
+
+        async function fetchWithBackoff(url, options, maxRetries = 4) {
+            let finalUrl = url;
+            const customKey = localStorage.getItem('ielts_master_gemini_key');
+            if (customKey && customKey.trim() && finalUrl.includes('key=')) {
+                finalUrl = finalUrl.replace(/key=[^&]*/, `key=${encodeURIComponent(customKey.trim())}`);
+            }
+
+            let delay = 1000;
+            for (let attempt = 0; attempt <= maxRetries; attempt++) {
+                try {
+                    const response = await fetch(finalUrl, options);
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}`);
+                    }
+                    return await response.json();
+                } catch (err) {
+                    if (attempt === maxRetries) throw err;
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    delay *= 2;
+                }
+            }
+        }
+
+        function toggleIosInstallModal(show) {
+            const modal = document.getElementById('iosInstallModal');
+            if (!modal) return;
+            if (show) {
+                const saved = localStorage.getItem('ielts_master_gemini_key') || '';
+                const input = document.getElementById('customGeminiKeyInput');
+                if (input) input.value = saved;
+                modal.classList.remove('hidden');
+                safeRefreshIcons();
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+
+        function saveCustomGeminiKey() {
+            const val = document.getElementById('customGeminiKeyInput').value.trim();
+            if (val) {
+                localStorage.setItem('ielts_master_gemini_key', val);
+                showToast('Đã lưu Gemini API Key trên trình duyệt iPhone!', 'success');
+            } else {
+                localStorage.removeItem('ielts_master_gemini_key');
+                showToast('Đã xóa API Key tùy chỉnh.', 'info');
+            }
+            toggleIosInstallModal(false);
+        }
+
+        function downloadStandaloneHtml() {
+            try {
+                const modal = document.getElementById('iosInstallModal');
+                const wasOpen = modal && !modal.classList.contains('hidden');
+                if (wasOpen) modal.classList.add('hidden');
+
+                const fullHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+                if (wasOpen) modal.classList.remove('hidden');
+
+                const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'index.html';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                showToast('Đã tải file index.html! Hãy đưa lên tiiny.host trên Safari.', 'success');
+            } catch (e) {
+                showToast('Hãy mở bằng trình duyệt Safari để tải file.', 'error');
+            }
+        }
+
+        // Main Tab Switcher
+        function switchMainTab(tabId) {
+            document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+            const panel = document.getElementById(`view-${tabId}`);
+            if (panel) panel.classList.add('active');
+
+            document.querySelectorAll('.nav-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-blue-600', 'text-white', 'font-bold', 'shadow-md', 'shadow-blue-600/25');
+                btn.classList.add('bg-white/5', 'text-slate-300', 'font-semibold');
+            });
+            const activeBtn = document.getElementById(`tab-btn-${tabId}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-white/5', 'text-slate-300', 'font-semibold');
+                activeBtn.classList.add('bg-blue-600', 'text-white', 'font-bold', 'shadow-md', 'shadow-blue-600/25');
+            }
+
+            document.querySelectorAll('.mob-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-blue-600/20', 'text-blue-400');
+                btn.classList.add('text-slate-400');
+            });
+            const activeMobBtn = document.getElementById(`mob-btn-${tabId}`);
+            if (activeMobBtn) {
+                activeMobBtn.classList.remove('text-slate-400');
+                activeMobBtn.classList.add('bg-blue-600/20', 'text-blue-400');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            safeRefreshIcons();
+        }
+
+        // =========================================================================
+        // 3. TAB 1: ROADMAP, DAILY TASKS, SCIENCE METHODS & SEARCH MATERIALS
+        // =========================================================================
+        function renderRoadmap() {
+            const grid = document.getElementById('roadmapTimelineGrid');
+            if (!grid) return;
+            grid.innerHTML = SIX_MONTH_ROADMAP.map(item => `
+                <div class="p-4 rounded-2xl bg-brand-950/90 border border-white/10 hover:border-blue-500/35 transition-all space-y-2">
+                    <div class="flex items-center justify-between gap-2">
+                        <span class="px-2.5 py-0.5 rounded-lg bg-gradient-to-r ${item.color} text-white text-[11px] font-extrabold">
+                            ${item.month}
+                        </span>
+                        <span class="font-mono text-[11px] font-bold text-emerald-400">${item.target}</span>
+                    </div>
+                    <h4 class="text-xs sm:text-sm font-bold text-white">${item.title}</h4>
+                    <p class="text-[11px] text-slate-400 leading-relaxed">${item.focus}</p>
+                </div>
+            `).join('');
+        }
+
+        function renderDailyChecklist() {
+            const container = document.getElementById('dailyChecklistContainer');
+            if (!container) return;
+            const doneCount = DAILY_TASKS.filter(t => t.done).length;
+            const pct = Math.round((doneCount / DAILY_TASKS.length) * 100);
+
+            document.getElementById('dailyProgressText').textContent = `${doneCount}/${DAILY_TASKS.length}`;
+            document.getElementById('dailyProgressBar').style.width = `${pct}%`;
+
+            container.innerHTML = DAILY_TASKS.map(task => `
+                <button onclick="toggleDailyTask('${task.id}')" class="btn-tactile w-full text-left p-3 rounded-2xl border transition-all flex items-start gap-3 ${
+                    task.done
+                        ? 'bg-emerald-950/40 border-emerald-500/35 text-emerald-100'
+                        : 'bg-brand-950/85 border-white/10 hover:border-white/20 text-slate-200'
+                }">
+                    <div class="w-5 h-5 rounded-lg mt-0.5 flex items-center justify-center shrink-0 border ${
+                        task.done ? 'bg-emerald-500 border-emerald-400 text-slate-950' : 'border-slate-600'
+                    }">
+                        ${task.done ? '<i data-lucide="check" class="w-3.5 h-3.5"></i>' : ''}
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold ${task.done ? 'line-through text-emerald-300' : 'text-white'}">${task.title}</p>
+                        <p class="text-[11px] text-slate-400 mt-0.5">${task.desc}</p>
+                    </div>
+                </button>
+            `).join('');
+            safeRefreshIcons();
+        }
+
+        function toggleDailyTask(id) {
+            const task = DAILY_TASKS.find(t => t.id === id);
+            if (task) {
+                task.done = !task.done;
+                renderDailyChecklist();
+                if (task.done) showToast('Tuyệt vời! Bạn đã hoàn thành thêm 1 mục tiêu hôm nay 🎉', 'success');
+            }
+        }
+
+        function switchMethodTab(tab) {
+            const sciPanel = document.getElementById('panel-method-science');
+            const crePanel = document.getElementById('panel-method-creators');
+            const sciBtn = document.getElementById('btn-method-science');
+            const creBtn = document.getElementById('btn-method-creators');
+
+            if (tab === 'science') {
+                sciPanel.classList.remove('hidden');
+                crePanel.classList.add('hidden');
+                sciBtn.classList.add('bg-purple-600', 'text-white', 'font-bold');
+                sciBtn.classList.remove('text-slate-300', 'font-semibold');
+                creBtn.classList.remove('bg-purple-600', 'text-white', 'font-bold');
+                creBtn.classList.add('text-slate-300', 'font-semibold');
+            } else {
+                crePanel.classList.remove('hidden');
+                sciPanel.classList.add('hidden');
+                creBtn.classList.add('bg-purple-600', 'text-white', 'font-bold');
+                creBtn.classList.remove('text-slate-300', 'font-semibold');
+                sciBtn.classList.remove('bg-purple-600', 'text-white', 'font-bold');
+                sciBtn.classList.add('text-slate-300', 'font-semibold');
+            }
+        }
+
+        function renderScienceAndCreators() {
+            const sciPanel = document.getElementById('panel-method-science');
+            if (sciPanel) {
+                sciPanel.innerHTML = SCIENCE_METHODS.map(m => `
+                    <div class="p-3.5 rounded-2xl bg-brand-950/85 border border-white/10 space-y-1.5">
+                        <span class="px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 text-[10px] font-bold">${m.badge}</span>
+                        <h4 class="font-bold text-white text-xs">${m.title}</h4>
+                        <p class="text-[11px] text-slate-300 leading-relaxed">${m.desc}</p>
+                    </div>
+                `).join('');
+            }
+
+            const crePanel = document.getElementById('panel-method-creators');
+            if (crePanel) {
+                crePanel.innerHTML = CREATORS_AND_CENTERS.map(c => `
+                    <div class="p-3.5 rounded-2xl bg-brand-950/85 border border-white/10 space-y-1.5">
+                        <span class="px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 text-[10px] font-bold">${c.tag}</span>
+                        <h4 class="font-bold text-white text-xs">${c.name}</h4>
+                        <p class="text-[11px] text-slate-300 leading-relaxed">${c.detail}</p>
+                    </div>
+                `).join('');
+            }
+        }
+
+        async function fetchDailyMaterials() {
+            const level = document.getElementById('materialLevelSelect').value;
+            const query = `Tìm kiếm trên Internet các lộ trình và nguồn tài liệu học tiếng Anh & luyện thi IELTS miễn phí uy tín nhất (kết hợp phương pháp khoa học Spaced Repetition, Shadowing, Comprehensible Input và tham khảo phong cách tự học của các YouTuber như Gấu Forum, IELTS Simon, IELTS Liz, cùng giáo trình chuẩn của các trung tâm lâu đời như British Council, ACET, ZIM) phù hợp cho trình độ: ${level}.
+Hãy lập một "Giáo án & Lộ trình tự học thực chiến" bằng tiếng Việt gồm:
+1. Lộ trình & nguồn tài liệu video/audio/bài đọc thực tế miễn phí (nêu rõ tên kênh/chuyên mục).
+2. 1 bài đọc học thuật ngắn (khoảng 110 từ tiếng Anh) kèm bản dịch tiếng Việt và 5 từ vựng/collocations Band 8.0 rút ra từ bài.
+3. 1 bài tập thực hành nhanh có đáp án giải thích.`;
+            await runMaterialSearch(query);
+        }
+
+        async function fetchCustomMaterialQuery(customPrompt) {
+            await runMaterialSearch(customPrompt);
+        }
+
+        async function runMaterialSearch(prompt) {
+            const btn = document.getElementById('fetchMaterialBtn');
+            const out = document.getElementById('dailyMaterialOutput');
+
+            btn.disabled = true;
+            btn.innerHTML = `<span class="animate-spin inline-block w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full"></span> Đang tìm tài liệu...`;
+            out.innerHTML = `
+                <div class="space-y-2.5">
+                    <div class="h-4 w-1/2 rounded shimmer"></div>
+                    <div class="h-20 w-full rounded-2xl shimmer"></div>
+                    <div class="h-20 w-full rounded-2xl shimmer"></div>
+                </div>
+            `;
+
+            try {
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+                const payload = {
+                    contents: [{ parts: [{ text: prompt }] }],
+                    tools: [{ "google_search": {} }]
+                };
+
+                const result = await fetchWithBackoff(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const candidate = result.candidates?.[0];
+                const rawText = candidate?.content?.parts?.[0]?.text || "Không tìm thấy kết quả phù hợp.";
+                const attributions = candidate?.groundingMetadata?.groundingAttributions || [];
+                const sources = Array.from(
+                    new Map(
+                        attributions
+                            .map(a => ({ uri: a.web?.uri, title: a.web?.title }))
+                            .filter(s => s.uri && s.title)
+                            .map(s => [s.uri, s])
+                    ).values()
+                ).slice(0, 5);
+
+                out.innerHTML = `
+                    <div class="space-y-2 leading-relaxed">${formatMarkdown(rawText)}</div>
+                    ${sources.length > 0 ? `
+                        <div class="pt-3 border-t border-white/10 space-y-1.5">
+                            <p class="text-[11px] font-bold uppercase tracking-wider text-emerald-400">Nguồn tài liệu tham khảo từ Internet:</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+                                ${sources.map(s => `
+                                    <a href="${s.uri}" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/25 text-xs text-emerald-300 flex items-center justify-between gap-2 transition-colors">
+                                        <span class="truncate">🔗 ${s.title}</span>
+                                        <i data-lucide="external-link" class="w-3.5 h-3.5 shrink-0"></i>
+                                    </a>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+                `;
+                safeRefreshIcons();
+                showToast('Đã tổng hợp lộ trình & tài liệu thực tế!', 'success');
+            } catch (e) {
+                out.innerHTML = `<p class="text-xs text-rose-300">Không thể kết nối tìm kiếm tài liệu lúc này. Vui lòng thử lại sau.</p>`;
+                showToast('Lỗi tìm kiếm tài liệu.', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = `<i data-lucide="search" class="w-3.5 h-3.5"></i> Kiếm tài liệu hôm nay`;
+                safeRefreshIcons();
+            }
+        }
+
+        // =========================================================================
+        // 4. TAB 2: Q&A TUTOR + MULTIMODAL IMAGE SOLVER (PASTE & UPLOAD)
+        // =========================================================================
+        function filterQaPrompts(category) {
+            activeQaCategory = category;
+            document.querySelectorAll('.qa-cat-btn').forEach(btn => {
+                if (btn.dataset.qacat === category) {
+                    btn.classList.add('bg-blue-600', 'text-white', 'font-bold');
+                    btn.classList.remove('bg-brand-950', 'text-slate-300', 'font-semibold');
+                } else {
+                    btn.classList.remove('bg-blue-600', 'text-white', 'font-bold');
+                    btn.classList.add('bg-brand-950', 'text-slate-300', 'font-semibold');
+                }
+            });
+            renderQaPromptBank();
+        }
+
+        function renderQaPromptBank() {
+            const list = document.getElementById('qaQuickPromptsList');
+            if (!list) return;
+            const filtered = activeQaCategory === 'ALL'
+                ? QA_PROMPT_BANK
+                : QA_PROMPT_BANK.filter(item => item.cat === activeQaCategory);
+
+            list.innerHTML = filtered.map(item => `
+                <button onclick="sendQuickQA('${item.prompt.replace(/'/g, "\\'")}')" class="btn-tactile shrink-0 px-3 py-1.5 rounded-xl bg-brand-950 hover:bg-brand-800 border border-white/10 text-xs text-slate-200">
+                    ${item.label}
+                </button>
+            `).join('');
+        }
+
+        function sendQuickQA(promptText) {
+            document.getElementById('qaTextInput').value = promptText;
+            sendQaMessage();
+        }
+
+        async function generateMoreQaPrompts() {
+            const btn = document.getElementById('genMoreQaBtn');
+            btn.disabled = true;
+            btn.innerHTML = `<span class="animate-spin inline-block w-3 h-3 border-2 border-blue-300 border-t-transparent rounded-full"></span> Đang tạo...`;
+
+            const prompt = `Tạo thêm 6 câu hỏi luyện tư duy tiếng Anh & IELTS (từ mất gốc đến Band 8.0) thuộc các nhóm: Grammar, Pronunciation, ReadingListening, Band8.
+Trả về JSON thuần túy theo mảng:
+[
+  { "cat": "Grammar hoặc Pronunciation hoặc ReadingListening hoặc Band8", "label": "Emoji + Tiêu đề ngắn dưới 45 ký tự", "prompt": "Câu hỏi chi tiết để gửi cho gia sư AI" }
+]`;
+            try {
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+                const payload = {
+                    contents: [{ parts: [{ text: prompt }] }],
+                    generationConfig: { responseMimeType: "application/json" }
+                };
+                const result = await fetchWithBackoff(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const added = JSON.parse(result?.candidates?.[0]?.content?.parts?.[0]?.text || "[]");
+                if (Array.isArray(added) && added.length > 0) {
+                    QA_PROMPT_BANK = [...added, ...QA_PROMPT_BANK];
+                    activeQaCategory = 'ALL';
+                    renderQaPromptBank();
+                    showToast(`Đã tạo thêm ${added.length} câu hỏi mới vào ngân hàng Hỏi Đáp!`, 'success');
+                }
+            } catch (e) {
+                showToast('Không thể tạo thêm câu hỏi lúc này.', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = `<i data-lucide="sparkles" class="w-3.5 h-3.5"></i> AI Tạo thêm câu hỏi`;
+                safeRefreshIcons();
+            }
+        }
+
+        function handleQaImageUpload(event) {
+            const file = event.target.files?.[0];
+            if (!file) return;
+            readImageFileForQa(file);
+        }
+
+        function readImageFileForQa(file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const dataUrl = e.target.result;
+                pendingQaImageMime = file.type || 'image/png';
+                pendingQaImageBase64 = dataUrl.split(',')[1];
+                document.getElementById('qaImagePreviewImg').src = dataUrl;
+                document.getElementById('qaImagePreviewBar').classList.remove('hidden');
+                showToast('Đã đính kèm hình ảnh bài tập!', 'info');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function removeQaImage() {
+            pendingQaImageBase64 = null;
+            pendingQaImageMime = null;
+            document.getElementById('qaImagePreviewBar').classList.add('hidden');
+            document.getElementById('qaImageInput').value = '';
+        }
+
+        // Clipboard Paste Support (Ctrl+V screenshot directly into Q&A)
+        window.addEventListener('paste', function(e) {
+            const items = e.clipboardData?.items;
+            if (!items) return;
+            for (let item of items) {
+                if (item.type.indexOf('image') !== -1) {
+                    const file = item.getAsFile();
+                    if (file) {
+                        switchMainTab('qa');
+                        readImageFileForQa(file);
+                    }
+                }
+            }
+        });
+
+        function clearChatHistory() {
+            qaChatHistory = [];
+            removeQaImage();
+            document.getElementById('qaChatFeed').innerHTML = `
+                <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 rounded-xl bg-blue-600 flex items-center justify-center shrink-0">
+                        <i data-lucide="bot" class="w-4 h-4 text-white"></i>
+                    </div>
+                    <div class="glass-card rounded-2xl rounded-tl-none p-3.5 text-xs sm:text-sm text-slate-200 leading-relaxed max-w-[88%]">
+                        Đã làm mới cuộc trò chuyện! Bạn muốn hỏi ngữ pháp, từ vựng hay giải bài tập qua ảnh tiếp theo nào?
+                    </div>
+                </div>
+            `;
+            safeRefreshIcons();
+        }
+
+        async function sendQaMessage() {
+            const input = document.getElementById('qaTextInput');
+            const text = input.value.trim();
+            if (!text && !pendingQaImageBase64) {
+                showToast('Bạn hãy nhập câu hỏi hoặc tải ảnh bài tập nhé!', 'info');
+                return;
+            }
+
+            const feed = document.getElementById('qaChatFeed');
+            const btn = document.getElementById('qaSendBtn');
+            const userPrompt = text || 'Hãy đọc hình ảnh bài tập tiếng Anh này, dịch nghĩa, chọn đáp án đúng và giải thích chi tiết từng câu cho người mất gốc.';
+
+            // Render user bubble
+            const imgPreviewHtml = pendingQaImageBase64
+                ? `<img src="data:${pendingQaImageMime};base64,${pendingQaImageBase64}" class="max-h-40 rounded-xl mb-2 border border-white/15">`
+                : '';
+            feed.innerHTML += `
+                <div class="flex justify-end">
+                    <div class="bg-blue-600 text-white rounded-2xl rounded-tr-none p-3.5 text-xs sm:text-sm max-w-[85%] shadow-lg">
+                        ${imgPreviewHtml}
+                        <p>${userPrompt}</p>
+                    </div>
+                </div>
+            `;
+
+            const loadingId = `qa-load-${Date.now()}`;
+            feed.innerHTML += `
+                <div id="${loadingId}" class="flex items-start gap-3">
+                    <div class="w-8 h-8 rounded-xl bg-blue-600 flex items-center justify-center shrink-0">
+                        <i data-lucide="bot" class="w-4 h-4 text-white"></i>
+                    </div>
+                    <div class="glass-card rounded-2xl rounded-tl-none p-3.5 text-xs text-slate-300 flex items-center gap-2">
+                        <span class="animate-spin inline-block w-3.5 h-3.5 border-2 border-blue-400 border-t-transparent rounded-full"></span>
+                        <span>Gia sư AI đang phân tích & soạn lời giải chi tiết...</span>
+                    </div>
+                </div>
+            `;
+            feed.scrollTop = feed.scrollHeight;
+            safeRefreshIcons();
+
+            const parts = [{ text: userPrompt }];
+            if (pendingQaImageBase64) {
+                parts.push({
+                    inlineData: {
+                        mimeType: pendingQaImageMime,
+                        data: pendingQaImageBase64
+                    }
+                });
+            }
+
+            input.value = '';
+            removeQaImage();
+            btn.disabled = true;
+
+            try {
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+                const payload = {
+                    contents: [{ role: 'user', parts }],
+                    systemInstruction: {
+                        parts: [{
+                            text: "Bạn là Gia sư tiếng Anh & IELTS 8.0 tận tâm. Giải thích bằng tiếng Việt cực kỳ dễ hiểu cho người mất gốc, luôn kèm ví dụ tiếng Anh chuẩn xác, dịch nghĩa tiếng Việt, phiên âm IPA cho từ khó và mẹo nâng cấp lên Band 8.0."
+                        }]
+                    }
+                };
+
+                const result = await fetchWithBackoff(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const reply = result?.candidates?.[0]?.content?.parts?.[0]?.text || 'Xin lỗi, tôi chưa thể phân tích câu hỏi này.';
+                const loadEl = document.getElementById(loadingId);
+                if (loadEl) {
+                    loadEl.innerHTML = `
+                        <div class="w-8 h-8 rounded-xl bg-blue-600 flex items-center justify-center shrink-0">
+                            <i data-lucide="bot" class="w-4 h-4 text-white"></i>
+                        </div>
+                        <div class="glass-card rounded-2xl rounded-tl-none p-3.5 text-xs sm:text-sm text-slate-200 leading-relaxed max-w-[88%] space-y-1.5">
+                            ${formatMarkdown(reply)}
+                        </div>
+                    `;
+                }
+                safeRefreshIcons();
+                feed.scrollTop = feed.scrollHeight;
+            } catch (e) {
+                const loadEl = document.getElementById(loadingId);
+                if (loadEl) loadEl.innerHTML = `<p class="text-xs text-rose-300">Lỗi kết nối Gia sư AI. Vui lòng thử lại.</p>`;
+            } finally {
+                btn.disabled = false;
+            }
+        }
+
+        // =========================================================================
+        // 5. TAB 3: VOCABULARY BANK, NATIVE TTS & MICROPHONE PRONUNCIATION
+        // =========================================================================
+        function base64ToArrayBuffer(base64) {
+            const binaryString = atob(base64);
+            const len = binaryString.length;
+            const bytes = new Uint8Array(len);
+            for (let i = 0; i < len; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+            }
+            return bytes.buffer;
+        }
+
+        function pcmToWav(pcm16, sampleRate) {
+            const numChannels = 1;
+            const byteRate = sampleRate * numChannels * 2;
+            const blockAlign = numChannels * 2;
+            const dataSize = pcm16.byteLength;
+            const buffer = new ArrayBuffer(44 + dataSize);
+            const view = new DataView(buffer);
+
+            function writeString(offset, str) {
+                for (let i = 0; i < str.length; i++) {
+                    view.setUint8(offset + i, str.charCodeAt(i));
+                }
+            }
+
+            writeString(0, 'RIFF');
+            view.setUint32(4, 36 + dataSize, true);
+            writeString(8, 'WAVE');
+            writeString(12, 'fmt ');
+            view.setUint32(16, 16, true);
+            view.setUint16(20, 1, true);
+            view.setUint16(22, numChannels, true);
+            view.setUint32(24, sampleRate, true);
+            view.setUint32(28, byteRate, true);
+            view.setUint16(32, blockAlign, true);
+            view.setUint16(34, 16, true);
+            writeString(36, 'data');
+            view.setUint32(40, dataSize, true);
+
+            const pcmBytes = new Uint8Array(pcm16.buffer);
+            new Uint8Array(buffer, 44).set(pcmBytes);
+            return new Blob([buffer], { type: 'audio/wav' });
+        }
+
+        async function speakEnglishText(text, stylePrompt = 'Pronounce clearly in standard British English:', voiceName = 'Kore') {
+            if (activeAudioPlayer) {
+                activeAudioPlayer.pause();
+                activeAudioPlayer = null;
+            }
+            try {
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
+                const payload = {
+                    contents: [{ parts: [{ text: `${stylePrompt} "${text}"` }] }],
+                    generationConfig: {
+                        responseModalities: ["AUDIO"],
+                        speechConfig: {
+                            voiceConfig: {
+                                prebuiltVoiceConfig: { voiceName }
+                            }
+                        }
+                    },
+                    model: "gemini-2.5-flash-preview-tts"
+                };
+
+                const result = await fetchWithBackoff(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const part = result?.candidates?.[0]?.content?.parts?.[0];
+                const audioData = part?.inlineData?.data;
+                const mimeType = part?.inlineData?.mimeType || '';
+
+                if (audioData && mimeType.startsWith('audio/')) {
+                    const rateMatch = mimeType.match(/rate=(\d+)/);
+                    const sampleRate = rateMatch ? parseInt(rateMatch[1], 10) : 24000;
+                    const pcmBuffer = base64ToArrayBuffer(audioData);
+                    const pcm16 = new Int16Array(pcmBuffer);
+                    const wavBlob = pcmToWav(pcm16, sampleRate);
+                    const audioUrl = URL.createObjectURL(wavBlob);
+                    activeAudioPlayer = new Audio(audioUrl);
+                    activeAudioPlayer.play();
+                    return;
+                }
+                throw new Error('Fallback to browser TTS');
+            } catch (e) {
+                // Reliable browser SpeechSynthesis fallback
+                if ('speechSynthesis' in window) {
+                    window.speechSynthesis.cancel();
+                    const utter = new SpeechSynthesisUtterance(text);
+                    utter.lang = 'en-GB';
+                    utter.rate = stylePrompt.includes('slowly') ? 0.72 : 0.95;
+                    window.speechSynthesis.speak(utter);
+                }
+            }
+        }
+
+        function filterVocabLevel(level) {
+            activeVocabLevel = level;
+            document.querySelectorAll('.vocab-filter-btn').forEach(btn => {
+                if (btn.dataset.vlevel === level) {
+                    btn.classList.add('bg-blue-600', 'text-white', 'font-bold');
+                    btn.classList.remove('bg-brand-950', 'text-slate-300', 'font-semibold');
+                } else {
+                    btn.classList.remove('bg-blue-600', 'text-white', 'font-bold');
+                    btn.classList.add('bg-brand-950', 'text-slate-300', 'font-semibold');
+                }
+            });
+            renderVocabGrid();
+        }
+
+        function renderVocabGrid() {
+            const grid = document.getElementById('vocabCardsGrid');
+            if (!grid) return;
+            const list = activeVocabLevel === 'ALL'
+                ? VOCAB_DATABASE
+                : VOCAB_DATABASE.filter(v => v.level === activeVocabLevel);
+
+            grid.innerHTML = list.map((item, idx) => {
+                const badgeColor = item.level === 'Foundation'
+                    ? 'bg-sky-500/20 text-sky-300'
+                    : item.level === 'Band 6.5'
+                    ? 'bg-amber-500/20 text-amber-300'
+                    : 'bg-purple-500/20 text-purple-300';
+                return `
+                    <div class="p-4 rounded-2xl bg-brand-950/90 border border-white/10 hover:border-blue-500/40 transition-all flex flex-col justify-between space-y-2.5">
+                        <div class="space-y-1.5">
+                            <div class="flex items-center justify-between gap-2">
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold ${badgeColor}">${item.level}</span>
+                                <span class="font-mono text-xs text-emerald-400">${item.ipa}</span>
+                            </div>
+                            <div class="flex items-baseline gap-2">
+                                <h4 class="text-base font-extrabold text-white">${item.word}</h4>
+                                <span class="text-xs italic text-slate-400">(${item.pos})</span>
+                            </div>
+                            <p class="text-xs text-slate-200 font-medium">${item.meaning}</p>
+                            <p class="text-[11px] text-blue-300">🔗 <em>${item.collocation}</em></p>
+                            <p class="text-[11px] text-slate-400 italic leading-relaxed">"${item.example}"</p>
+                        </div>
+                        <div class="pt-2 border-t border-white/10 flex gap-2">
+                            <button onclick="speakEnglishText('${item.word.replace(/'/g, "\\'")}', 'Pronounce clearly:')" class="btn-tactile flex-1 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-semibold text-slate-200 flex items-center justify-center gap-1">
+                                <i data-lucide="volume-2" class="w-3.5 h-3.5 text-blue-400"></i> Nghe
+                            </button>
+                            <button onclick="selectTargetWordForPractice('${item.word.replace(/'/g, "\\'")}')" class="btn-tactile flex-1 py-1.5 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/30 text-xs font-bold text-emerald-300 flex items-center justify-center gap-1">
+                                <i data-lucide="mic" class="w-3.5 h-3.5"></i> Luyện đọc
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            safeRefreshIcons();
+        }
+
+        function selectTargetWordForPractice(wordStr) {
+            const found = VOCAB_DATABASE.find(v => v.word.toLowerCase() === wordStr.toLowerCase());
+            if (found) {
+                currentTargetWord = found;
+                document.getElementById('targetWordDisplay').textContent = found.word;
+                document.getElementById('targetWordIpa').textContent = found.ipa;
+                document.getElementById('targetWordMeaning').textContent = found.meaning;
+                document.getElementById('pronunciationFeedbackBox').classList.add('hidden');
+                playTargetWordAudio();
+                showToast(`Đã chọn từ "${found.word}" lên phòng chấm phát âm!`, 'info');
+            }
+        }
+
+        function playTargetWordAudio() {
+            speakEnglishText(currentTargetWord.word, 'Pronounce this English word clearly with standard stress:');
+        }
+
+        function quickGenerateVocabTopic(topicName) {
+            document.getElementById('customWordTopicInput').value = topicName;
+            generateAIVocabPack();
+        }
+
+        async function generateAIVocabPack() {
+            const topic = document.getElementById('customWordTopicInput').value.trim();
+            if (!topic) {
+                showToast('Hãy nhập chủ đề hoặc từ vựng bạn muốn tạo nhé!', 'info');
+                return;
+            }
+            const btn = document.getElementById('genVocabBtn');
+            btn.disabled = true;
+            btn.innerHTML = `<span class="animate-spin inline-block w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full"></span> Đang tạo từ...`;
+
+            const prompt = `Tạo bộ 6 từ vựng tiếng Anh chất lượng cao cho chủ đề "${topic}" (bao gồm từ cơ bản và từ học thuật Band 8.0).
+Trả về JSON thuần túy theo mảng sau:
+[
+  {
+    "word": "từ tiếng Anh",
+    "pos": "n. / v. / adj. / adv.",
+    "ipa": "/phiên âm IPA chuẩn/",
+    "level": "Foundation hoặc Band 6.5 hoặc Band 8.0",
+    "meaning": "Nghĩa tiếng Việt rõ ràng",
+    "collocation": "Cụm từ đi kèm tự nhiên",
+    "example": "Câu ví dụ tiếng Anh chuẩn học thuật"
+  }
+]`;
+            try {
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+                const payload = {
+                    contents: [{ parts: [{ text: prompt }] }],
+                    generationConfig: { responseMimeType: "application/json" }
+                };
+                const result = await fetchWithBackoff(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const added = JSON.parse(result?.candidates?.[0]?.content?.parts?.[0]?.text || "[]");
+                if (Array.isArray(added) && added.length > 0) {
+                    VOCAB_DATABASE = [...added, ...VOCAB_DATABASE];
+                    activeVocabLevel = 'ALL';
+                    renderVocabGrid();
+                    selectTargetWordForPractice(added[0].word);
+                    showToast(`Đã tạo thêm ${added.length} từ vựng chủ đề "${topic}"!`, 'success');
+                }
+            } catch (e) {
+                showToast('Không thể tạo từ vựng lúc này.', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = `<i data-lucide="sparkles" class="w-4 h-4"></i> AI Tạo thêm từ vựng 8.0`;
+                safeRefreshIcons();
+            }
+        }
+
+        function startPronunciationCheck() {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const btn = document.getElementById('recordPronounceBtn');
+            const box = document.getElementById('pronunciationFeedbackBox');
+
+            if (!SpeechRecognition) {
+                showToast('Trình duyệt không hỗ trợ nhận diện giọng nói Micro. Hãy dùng Chrome/Edge!', 'error');
+                return;
+            }
+
+            const recognition = new SpeechRecognition();
+            recognition.lang = 'en-US';
+            recognition.interimResults = false;
+            recognition.maxAlternatives = 1;
+
+            btn.classList.add('mic-recording', 'from-rose-600', 'to-red-600');
+            btn.innerHTML = `<i data-lucide="radio" class="w-4 h-4"></i> Đang nghe bạn đọc...`;
+            safeRefreshIcons();
+
+            recognition.onresult = async function(event) {
+                const spoken = event.results[0][0].transcript;
+                const confidence = Math.round((event.results[0][0].confidence || 0.85) * 100);
+                box.classList.remove('hidden');
+                box.innerHTML = `<p class="text-xs text-slate-300">Bạn vừa đọc: <strong class="text-white">"${spoken}"</strong> — AI đang chấm điểm âm vị IPA...</p>`;
+
+                try {
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+                    const prompt = `Học viên đang luyện phát âm từ "${currentTargetWord.word}" (${currentTargetWord.ipa}). Hệ thống nhận diện giọng nói nghe được: "${spoken}" (độ tự tin ${confidence}%).
+Hãy chấm điểm phát âm trên thang 100%, phân tích âm tiết/trọng âm nào đã chuẩn và hướng dẫn khẩu hình bằng tiếng Việt ngắn gọn, khích lệ.`;
+                    const result = await fetchWithBackoff(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+                    });
+                    const feedback = result?.candidates?.[0]?.content?.parts?.[0]?.text || '';
+                    box.innerHTML = `
+                        <div class="flex items-center justify-between border-b border-white/10 pb-1.5">
+                            <span class="font-bold text-emerald-400">Kết quả nhận diện: "${spoken}"</span>
+                            <span class="font-mono text-xs text-amber-300">Độ rõ: ${confidence}%</span>
+                        </div>
+                        <div class="leading-relaxed">${formatMarkdown(feedback)}</div>
+                    `;
+                } catch (err) {
+                    box.innerHTML = `<p class="text-xs text-emerald-300">Bạn đã đọc: "${spoken}" (Độ chính xác nhận diện: ${confidence}%).</p>`;
+                }
+            };
+
+            recognition.onerror = function() {
+                showToast('Không thu được âm thanh. Hãy kiểm tra quyền Micro trên trình duyệt.', 'error');
+            };
+
+            recognition.onend = function() {
+                btn.classList.remove('mic-recording', 'from-rose-600', 'to-red-600');
+                btn.innerHTML = `<i data-lucide="mic" class="w-4 h-4"></i> Bấm Micro đọc từ này`;
+                safeRefreshIcons();
+            };
+
+            recognition.start();
+        }
+
+        // =========================================================================
+        // 6. TAB 4: LISTENING DICTATION & HUMAN-AI SPEAKING CONVERSATION
+        // =========================================================================
+        function updateListeningUI() {
+            const item = LISTENING_EXERCISES[currentListeningIdx];
+            document.getElementById('listeningLevelTag').textContent = `Level: ${item.level}`;
+            document.getElementById('dictationUserInput').value = '';
+            document.getElementById('dictationFeedbackBox').classList.add('hidden');
+
+            const jumpSelect = document.getElementById('listeningJumpSelect');
+            if (jumpSelect) {
+                jumpSelect.innerHTML = LISTENING_EXERCISES.map((ex, i) => `
+                    <option value="${i}" ${i === currentListeningIdx ? 'selected' : ''}>Bài ${i + 1}/${LISTENING_EXERCISES.length} (${ex.level.split(' ')[0]})</option>
+                `).join('');
+            }
+        }
+
+        function jumpToListening(idx) {
+            currentListeningIdx = parseInt(idx, 10) || 0;
+            updateListeningUI();
+            playListeningSentence(false);
+        }
+
+        function prevListeningExercise() {
+            currentListeningIdx = (currentListeningIdx - 1 + LISTENING_EXERCISES.length) % LISTENING_EXERCISES.length;
+            updateListeningUI();
+            playListeningSentence(false);
+        }
+
+        function playListeningSentence(isSlow) {
+            const item = LISTENING_EXERCISES[currentListeningIdx];
+            const style = isSlow
+                ? "Read this English sentence very slowly and clearly word by word for a beginner student:"
+                : "Read this English sentence naturally at standard IELTS listening pace:";
+            speakEnglishText(item.sentence, style, isSlow ? "Kore" : "Puck");
+        }
+
+        function nextListeningExercise() {
+            currentListeningIdx = (currentListeningIdx + 1) % LISTENING_EXERCISES.length;
+            updateListeningUI();
+            playListeningSentence(false);
+        }
+
+        function checkDictationAnswer() {
+            const item = LISTENING_EXERCISES[currentListeningIdx];
+            const userVal = document.getElementById('dictationUserInput').value.trim();
+            const box = document.getElementById('dictationFeedbackBox');
+            if (!userVal) {
+                showToast('Hãy gõ lại câu bạn nghe được trước khi kiểm tra!', 'info');
+                return;
+            }
+
+            const cleanTarget = item.sentence.toLowerCase().replace(/[.,!?;:'"]/g, '').split(/\s+/);
+            const cleanUser = userVal.toLowerCase().replace(/[.,!?;:'"]/g, '').split(/\s+/);
+            let matched = 0;
+            cleanTarget.forEach((word, i) => {
+                if (cleanUser[i] === word) matched++;
+            });
+            const score = Math.round((matched / cleanTarget.length) * 100);
+
+            box.classList.remove('hidden');
+            box.innerHTML = `
+                <div class="flex items-center justify-between">
+                    <span class="font-bold ${score >= 85 ? 'text-emerald-400' : 'text-amber-300'}">Độ chính xác: ${score}%</span>
+                    <span class="text-[11px] text-slate-400">${matched}/${cleanTarget.length} từ khớp</span>
+                </div>
+                <p class="text-white font-semibold mt-1">Đáp án chuẩn: ${item.sentence}</p>
+                <p class="text-slate-400">Dịch nghĩa: ${item.vi}</p>
+            `;
+        }
+
+        function revealDictationAnswer() {
+            const item = LISTENING_EXERCISES[currentListeningIdx];
+            const box = document.getElementById('dictationFeedbackBox');
+            box.classList.remove('hidden');
+            box.innerHTML = `
+                <p class="text-emerald-300 font-bold">Đáp án: ${item.sentence}</p>
+                <p class="text-slate-400">Dịch nghĩa: ${item.vi}</p>
+            `;
+        }
+
+        async function generateAIListeningPack() {
+            const topic = document.getElementById('listeningTopicSelect').value;
+            const btn = document.getElementById('genListenBtn');
+            btn.disabled = true;
+            btn.innerHTML = `<span class="animate-spin inline-block w-3 h-3 border-2 border-amber-300 border-t-transparent rounded-full"></span> Tạo...`;
+
+            const prompt = `Tạo 5 câu luyện nghe chép chính tả (Dictation) tiếng Anh mới lạ, tự nhiên chuẩn bản xứ cho chủ đề: "${topic}".
+Trả về JSON thuần túy theo mảng sau:
+[
+  {
+    "level": "${topic}",
+    "sentence": "Câu tiếng Anh chuẩn ngữ pháp, tự nhiên (dài 10-18 từ)",
+    "vi": "Bản dịch tiếng Việt tự nhiên"
+  }
+]`;
+            try {
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+                const payload = {
+                    contents: [{ parts: [{ text: prompt }] }],
+                    generationConfig: { responseMimeType: "application/json" }
+                };
+                const result = await fetchWithBackoff(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const added = JSON.parse(result?.candidates?.[0]?.content?.parts?.[0]?.text || "[]");
+                if (Array.isArray(added) && added.length > 0) {
+                    LISTENING_EXERCISES = [...added, ...LISTENING_EXERCISES];
+                    currentListeningIdx = 0;
+                    updateListeningUI();
+                    playListeningSentence(false);
+                    showToast(`Đã tạo thêm ${added.length} bài nghe chép chính tả mới!`, 'success');
+                }
+            } catch (e) {
+                showToast('Không thể tạo thêm bài nghe lúc này.', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = `<i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Tạo 5 câu mới`;
+                safeRefreshIcons();
+            }
+        }
+
+        // Human-AI Speaking Roleplay & Examiner Grader
+        function getFilteredSpeakingQuestions() {
+            const mode = document.getElementById('speakingModeSelect').value;
+            return SPEAKING_QUESTION_BANK.filter(item => {
+                const matchMode = mode === 'ALL' || item.mode === mode;
+                const matchTopic = activeSpeakingTopic === 'ALL' || item.topic === activeSpeakingTopic;
+                return matchMode && matchTopic;
+            });
+        }
+
+        function setSpeakingTopic(topic) {
+            activeSpeakingTopic = topic;
+            document.querySelectorAll('.spk-topic-btn').forEach(btn => {
+                if (btn.dataset.spktopic === topic) {
+                    btn.classList.add('bg-blue-600', 'text-white', 'font-bold');
+                    btn.classList.remove('bg-brand-950', 'text-slate-300', 'font-semibold');
+                } else {
+                    btn.classList.remove('bg-blue-600', 'text-white', 'font-bold');
+                    btn.classList.add('bg-brand-950', 'text-slate-300', 'font-semibold');
+                }
+            });
+            filterSpeakingQuestions();
+        }
+
+        function filterSpeakingQuestions() {
+            const list = getFilteredSpeakingQuestions();
+            const dropdown = document.getElementById('speakingQuestionDropdown');
+            if (!dropdown) return;
+
+            if (list.length === 0) {
+                dropdown.innerHTML = `<option value="">Không có câu khớp bộ lọc — bấm "+5 câu AI" để tạo</option>`;
+                return;
+            }
+
+            dropdown.innerHTML = list.map((item, idx) => `
+                <option value="${idx}">[${item.mode}] ${item.q.slice(0, 68)}...</option>
+            `).join('');
+
+            startSpeakingWithQuestion(list[0]);
+        }
+
+        function selectSpeakingQuestionFromBank(idxStr) {
+            const list = getFilteredSpeakingQuestions();
+            const idx = parseInt(idxStr, 10);
+            if (list[idx]) {
+                startSpeakingWithQuestion(list[idx]);
+            }
+        }
+
+        function pickRandomSpeakingQuestion() {
+            const list = getFilteredSpeakingQuestions();
+            if (list.length === 0) {
+                generateAISpeakingQuestions();
+                return;
+            }
+            const randomIdx = Math.floor(Math.random() * list.length);
+            const dropdown = document.getElementById('speakingQuestionDropdown');
+            if (dropdown) dropdown.value = randomIdx;
+            startSpeakingWithQuestion(list[randomIdx]);
+            showToast('Đã chuyển sang câu hỏi Speaking mới!', 'info');
+        }
+
+        function startSpeakingWithQuestion(item) {
+            speakingHistory = [{ role: 'model', text: item.q }];
+            const feed = document.getElementById('speakingChatFeed');
+            feed.innerHTML = `
+                <div class="flex items-start gap-2.5">
+                    <div class="w-8 h-8 rounded-xl bg-blue-600 flex items-center justify-center shrink-0">
+                        <i data-lucide="user-check" class="w-4 h-4 text-white"></i>
+                    </div>
+                    <div class="glass-card rounded-2xl rounded-tl-none p-3.5 text-xs text-slate-200 space-y-2 flex-1">
+                        <div class="flex flex-wrap items-center justify-between gap-2">
+                            <span class="font-bold text-blue-300">Giám khảo AI • ${item.mode} (${item.topic})</span>
+                            <button onclick="speakEnglishText('${item.q.replace(/'/g, "\\'")}', 'Speak warmly as an IELTS Examiner:')" class="px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 text-[10px] font-bold flex items-center gap-1">
+                                <i data-lucide="volume-2" class="w-3 h-3"></i> Nghe câu hỏi
+                            </button>
+                        </div>
+                        <p class="text-white font-medium leading-relaxed">${item.q}</p>
+                    </div>
+                </div>
+            `;
+            safeRefreshIcons();
+        }
+
+        async function generateAISpeakingQuestions() {
+            const mode = document.getElementById('speakingModeSelect').value;
+            const topic = activeSpeakingTopic === 'ALL' ? 'Diverse IELTS Topics (AI, Work, Culture, Environment, Health)' : activeSpeakingTopic;
+            const btn = document.getElementById('genSpkQBtn');
+            btn.disabled = true;
+            btn.innerHTML = `<span class="animate-spin inline-block w-3 h-3 border-2 border-blue-300 border-t-transparent rounded-full"></span> Tạo...`;
+
+            const prompt = `Tạo 5 câu hỏi luyện nói IELTS Speaking mới lạ, sát đề thi thật 2025–2026 cho chế độ: "${mode === 'ALL' ? 'IELTS Part 1, Part 2 và Part 3' : mode}" và chủ đề "${topic}".
+Trả về JSON thuần túy theo mảng sau:
+[
+  {
+    "mode": "Beginner Daily hoặc IELTS Part 1 hoặc IELTS Part 2 hoặc IELTS Part 3",
+    "topic": "${activeSpeakingTopic === 'ALL' ? 'Technology & AI' : activeSpeakingTopic}",
+    "q": "Câu hỏi tiếng Anh tự nhiên chuẩn giám khảo IELTS"
+  }
+]`;
+            try {
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+                const payload = {
+                    contents: [{ parts: [{ text: prompt }] }],
+                    generationConfig: { responseMimeType: "application/json" }
+                };
+                const result = await fetchWithBackoff(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const added = JSON.parse(result?.candidates?.[0]?.content?.parts?.[0]?.text || "[]");
+                if (Array.isArray(added) && added.length > 0) {
+                    SPEAKING_QUESTION_BANK = [...added, ...SPEAKING_QUESTION_BANK];
+                    filterSpeakingQuestions();
+                    showToast(`Đã bổ sung ${added.length} câu hỏi Speaking mới!`, 'success');
+                }
+            } catch (e) {
+                showToast('Không thể tạo thêm câu hỏi Speaking lúc này.', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = `<i data-lucide="sparkles" class="w-3.5 h-3.5"></i> +5 câu AI`;
+                safeRefreshIcons();
+            }
+        }
+
+        function toggleSpeakingMic() {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const btn = document.getElementById('speakingMicBtn');
+            if (!SpeechRecognition) {
+                showToast('Trình duyệt không hỗ trợ nhận diện giọng nói Micro.', 'error');
+                return;
+            }
+            if (isSpeakingRecording && speechRecognizer) {
+                speechRecognizer.stop();
+                return;
+            }
+            speechRecognizer = new SpeechRecognition();
+            speechRecognizer.lang = 'en-US';
+            speechRecognizer.interimResults = false;
+
+            isSpeakingRecording = true;
+            btn.classList.add('mic-recording');
+            showToast('Đang thu âm câu trả lời tiếng Anh của bạn...', 'info');
+
+            speechRecognizer.onresult = function(event) {
+                const transcript = event.results[0][0].transcript;
+                document.getElementById('speakingTextInput').value = transcript;
+                submitSpeakingTurn();
+            };
+            speechRecognizer.onend = function() {
+                isSpeakingRecording = false;
+                btn.classList.remove('mic-recording');
+            };
+            speechRecognizer.start();
+        }
+
+        async function submitSpeakingTurn() {
+            const input = document.getElementById('speakingTextInput');
+            const answer = input.value.trim();
+            if (!answer) {
+                showToast('Hãy nói hoặc nhập câu trả lời tiếng Anh của bạn!', 'info');
+                return;
+            }
+
+            const feed = document.getElementById('speakingChatFeed');
+            const btn = document.getElementById('speakingSendBtn');
+            const lastQuestion = speakingHistory[speakingHistory.length - 1]?.text || '';
+
+            feed.innerHTML += `
+                <div class="flex justify-end">
+                    <div class="bg-blue-600 text-white rounded-2xl rounded-tr-none p-3 text-xs max-w-[85%]">
+                        <p class="font-semibold text-[10px] text-blue-200 mb-0.5">Câu trả lời của bạn:</p>
+                        <p>${answer}</p>
+                    </div>
+                </div>
+            `;
+
+            const loadId = `spk-load-${Date.now()}`;
+            feed.innerHTML += `
+                <div id="${loadId}" class="flex items-start gap-2.5">
+                    <div class="w-8 h-8 rounded-xl bg-emerald-600 flex items-center justify-center shrink-0">
+                        <i data-lucide="award" class="w-4 h-4 text-white"></i>
+                    </div>
+                    <div class="glass-card rounded-2xl rounded-tl-none p-3 text-xs text-slate-300 flex items-center gap-2">
+                        <span class="animate-spin inline-block w-3.5 h-3.5 border-2 border-emerald-400 border-t-transparent rounded-full"></span>
+                        <span>Giám khảo IELTS đang chấm Band & viết mẫu 8.0+...</span>
+                    </div>
+                </div>
+            `;
+            feed.scrollTop = feed.scrollHeight;
+            safeRefreshIcons();
+
+            input.value = '';
+            btn.disabled = true;
+
+            const prompt = `Bạn là Giám khảo IELTS Speaking 8.5+.
+Câu hỏi giám khảo vừa hỏi: "${lastQuestion}"
+Câu trả lời của thí sinh: "${answer}"
+
+Hãy phản hồi bằng tiếng Việt kèm tiếng Anh chuẩn xác gồm 4 phần:
+1. **Ước lượng Band điểm Speaking (0–9.0)** theo 4 tiêu chí (Fluency & Coherence, Lexical Resource, Grammatical Range, Pronunciation).
+2. **Sửa lỗi ngữ pháp & từ vựng** trong câu trả lời của thí sinh (nếu còn đơn giản hoặc sai thì).
+3. **Câu trả lời mẫu nâng cấp chuẩn Band 8.0+ (Sample Answer)** tự nhiên, giàu Collocations.
+4. **1 Câu hỏi nối tiếp (Follow-up Question)** bằng tiếng Anh để tiếp tục hội thoại.`;
+
+            try {
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+                const result = await fetchWithBackoff(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+                });
+                const feedback = result?.candidates?.[0]?.content?.parts?.[0]?.text || '';
+                speakingHistory.push({ role: 'user', text: answer }, { role: 'model', text: feedback });
+
+                const loadEl = document.getElementById(loadId);
+                if (loadEl) {
+                    loadEl.innerHTML = `
+                        <div class="w-8 h-8 rounded-xl bg-emerald-600 flex items-center justify-center shrink-0">
+                            <i data-lucide="award" class="w-4 h-4 text-white"></i>
+                        </div>
+                        <div class="glass-card rounded-2xl rounded-tl-none p-3.5 text-xs text-slate-200 leading-relaxed flex-1 space-y-1.5">
+                            ${formatMarkdown(feedback)}
+                        </div>
+                    `;
+                }
+                safeRefreshIcons();
+                feed.scrollTop = feed.scrollHeight;
+            } catch (e) {
+                const loadEl = document.getElementById(loadId);
+                if (loadEl) loadEl.innerHTML = `<p class="text-xs text-rose-300">Không thể chấm điểm lúc này. Vui lòng thử lại.</p>`;
+            } finally {
+                btn.disabled = false;
+            }
+        }
+
+        // =========================================================================
+        // 7. TAB 5: IELTS WRITING BANK, OUTLINE HELPER & EXAMINER GRADER
+        // =========================================================================
+        function filterWritingBank() {
+            const type = document.getElementById('writingTaskType').value;
+            const select = document.getElementById('writingPresetSelect');
+            if (!select) return;
+
+            const filtered = type === 'ALL'
+                ? WRITING_PROMPT_BANK
+                : WRITING_PROMPT_BANK.filter(w => w.type === type);
+
+            select.innerHTML = filtered.map((item, i) => `
+                <option value="${i}">${item.title}</option>
+            `).join('');
+
+            if (filtered[0]) {
+                document.getElementById('writingTopicInput').value = filtered[0].prompt;
+            }
+        }
+
+        function selectWritingPreset(idxStr) {
+            const type = document.getElementById('writingTaskType').value;
+            const filtered = type === 'ALL'
+                ? WRITING_PROMPT_BANK
+                : WRITING_PROMPT_BANK.filter(w => w.type === type);
+            const idx = parseInt(idxStr, 10);
+            if (filtered[idx]) {
+                document.getElementById('writingTopicInput').value = filtered[idx].prompt;
+                showToast('Đã nạp đề bài luyện viết mới!', 'info');
+            }
+        }
+
+        function updateWritingWordCount() {
+            const text = document.getElementById('writingEssayInput').value.trim();
+            const count = text ? text.split(/\s+/).length : 0;
+            document.getElementById('writingWordCount').textContent = `${count} words`;
+        }
+
+        function handleWritingImageUpload(event) {
+            const file = event.target.files?.[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                pendingWritingImageMime = file.type || 'image/png';
+                pendingWritingImageBase64 = e.target.result.split(',')[1];
+                document.getElementById('writingImageBadge').classList.remove('hidden');
+                showToast('Đã đính kèm ảnh bài viết tay!', 'info');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function clearWritingImage() {
+            pendingWritingImageBase64 = null;
+            pendingWritingImageMime = null;
+            document.getElementById('writingImageBadge').classList.add('hidden');
+            document.getElementById('writingImageInput').value = '';
+        }
+
+        async function generateAIWritingPrompt() {
+            const taskType = document.getElementById('writingTaskType').value;
+            const btn = document.getElementById('genWritingTopicBtn');
+            btn.disabled = true;
+            btn.innerHTML = `<span class="animate-spin inline-block w-3.5 h-3.5 border-2 border-blue-300 border-t-transparent rounded-full"></span> Đang sinh đề...`;
+
+            const prompt = `Tạo 1 đề thi IELTS Writing mới lạ, sát đề thi thật 2025–2026 cho dạng bài: "${taskType === 'ALL' ? 'IELTS Writing Task 2' : taskType}".
+Chỉ trả về duy nhất nội dung đề bài bằng tiếng Anh chuẩn xác, không giải thích thêm.`;
+
+            try {
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+                const payload = { contents: [{ parts: [{ text: prompt }] }] };
+                const result = await fetchWithBackoff(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const newTopic = result?.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+                if (newTopic) {
+                    document.getElementById('writingTopicInput').value = newTopic;
+                    WRITING_PROMPT_BANK.unshift({
+                        type: taskType === 'ALL' ? 'Task 2 Opinion' : taskType,
+                        title: `[Đề AI Mới] ${newTopic.slice(0, 48)}...`,
+                        prompt: newTopic
+                    });
+                    filterWritingBank();
+                    showToast('Đã tạo đề bài IELTS Writing mới toanh!', 'success');
+                }
+            } catch (e) {
+                showToast('Không thể tạo đề mới lúc này.', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = `<i data-lucide="sparkles" class="w-3.5 h-3.5"></i> AI Tạo đề Writing mới`;
+                safeRefreshIcons();
+            }
+        }
+
+        async function getWritingOutlineHelp() {
+            const topic = document.getElementById('writingTopicInput').value.trim();
+            if (!topic) return;
+            const btn = document.getElementById('writingOutlineBtn');
+            const out = document.getElementById('writingGradingOutput');
+            btn.disabled = true;
+            btn.innerHTML = `<span class="animate-spin inline-block w-3.5 h-3.5 border-2 border-amber-300 border-t-transparent rounded-full"></span> Lập dàn ý...`;
+
+            const prompt = `Bạn là giáo viên luyện thi IELTS Writing 8.5. Học viên đang chuẩn bị viết đề bài sau:
+"${topic}"
+Hãy lập nhanh một **Dàn ý chi tiết (Outline) & Bộ từ vựng ăn điểm Band 8.0** bằng tiếng Việt kèm cụm từ tiếng Anh để giúp người mất gốc/trung cấp dễ dàng bắt tay vào viết bài:
+1. Mở bài (Paraphrase đề + Thesis statement).
+2. Thân bài 1 (Luận điểm chính + Giải thích + Ví dụ).
+3. Thân bài 2 (Luận điểm 2 + Giải thích + Ví dụ).
+4. Kết bài tóm tắt.
+5. 8 Collocations & Từ vựng C1 đắt giá nhất cho đề này (kèm nghĩa tiếng Việt).`;
+
+            try {
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+                const payload = { contents: [{ parts: [{ text: prompt }] }] };
+                const result = await fetchWithBackoff(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const guide = result?.candidates?.[0]?.content?.parts?.[0]?.text || "";
+                out.innerHTML = `<div class="space-y-2">${formatMarkdown(guide)}</div>`;
+                showToast('Đã tạo dàn ý chi tiết & từ vựng Band 8.0!', 'success');
+            } catch (e) {
+                showToast('Không thể tạo dàn ý lúc này.', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = `<i data-lucide="lightbulb" class="w-3.5 h-3.5"></i> Gợi ý dàn ý & Từ vựng 8.0`;
+                safeRefreshIcons();
+            }
+        }
+
+        async function gradeWritingEssay() {
+            const topic = document.getElementById('writingTopicInput').value.trim();
+            const essay = document.getElementById('writingEssayInput').value.trim();
+            if (!essay && !pendingWritingImageBase64) {
+                showToast('Hãy viết bài hoặc tải ảnh chụp bài viết tay trước khi chấm!', 'info');
+                return;
+            }
+
+            const btn = document.getElementById('gradeWritingBtn');
+            const out = document.getElementById('writingGradingOutput');
+            btn.disabled = true;
+            btn.innerHTML = `<span class="animate-spin inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full"></span> Giám khảo đang chấm bài...`;
+            out.innerHTML = `
+                <div class="space-y-2.5">
+                    <div class="h-5 w-1/3 rounded shimmer"></div>
+                    <div class="h-24 w-full rounded-2xl shimmer"></div>
+                    <div class="h-32 w-full rounded-2xl shimmer"></div>
+                </div>
+            `;
+
+            const instruction = `Bạn là Giám khảo chấm thi IELTS Writing quốc tế (Band 9.0).
+Đề bài: "${topic}"
+${essay ? `Bài làm của thí sinh:\n"${essay}"` : 'Hãy đọc nội dung bài viết tay trong ảnh đính kèm.'}
+
+Hãy chấm điểm và chữa bài cực kỳ chi tiết bằng tiếng Việt (kèm bài mẫu tiếng Anh):
+1. **Điểm Band Tổng (Overall Writing Band)** và điểm chi tiết 4 tiêu chí: Task Response/Achievement, Coherence & Cohesion, Lexical Resource, Grammatical Range & Accuracy.
+2. **Sửa lỗi từng câu (Error Correction)**: Chỉ ra lỗi ngữ pháp, dùng từ chưa tự nhiên và cách sửa chuẩn.
+3. **Bài viết mẫu hoàn chỉnh chuẩn Band 8.0+ (Band 8.0+ Model Rewrite)** giữ đúng ý tưởng của thí sinh nhưng nâng cấp từ vựng C1 và cấu trúc câu mạch lạc.`;
+
+            const parts = [{ text: instruction }];
+            if (pendingWritingImageBase64) {
+                parts.push({
+                    inlineData: {
+                        mimeType: pendingWritingImageMime,
+                        data: pendingWritingImageBase64
+                    }
+                });
+            }
+
+            try {
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+                const result = await fetchWithBackoff(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ contents: [{ role: 'user', parts }] })
+                });
+                const report = result?.candidates?.[0]?.content?.parts?.[0]?.text || '';
+                out.innerHTML = `<div class="space-y-2 leading-relaxed">${formatMarkdown(report)}</div>`;
+                showToast('Đã hoàn thành báo cáo chấm điểm IELTS Writing!', 'success');
+            } catch (e) {
+                out.innerHTML = `<p class="text-xs text-rose-300">Không thể chấm bài lúc này. Vui lòng thử lại.</p>`;
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = `<i data-lucide="award" class="w-4 h-4"></i> Chấm Điểm Chi Tiết & Viết Lại Chuẩn Band 8.0+`;
+                safeRefreshIcons();
+            }
+        }
+
+        // =========================================================================
+        // 8. INITIALIZE APPLICATION ON WINDOW LOAD
+        // =========================================================================
+        window.onload = function() {
+            safeRefreshIcons();
+            renderRoadmap();
+            renderDailyChecklist();
+            renderScienceAndCreators();
+            renderQaPromptBank();
+            renderVocabGrid();
+            updateListeningUI();
+            filterSpeakingQuestions();
+            filterWritingBank();
+        };
+    </script>
+</body>
+</html>
